@@ -1,0 +1,226 @@
+import React from "react";
+import { useCart } from "../../context/Cartcontext";
+import { v4 as uuidv4 } from "uuid";
+import { converCurences } from "../../config";
+const Cart = () => {
+  const {
+    cartItems,
+    totalPrice,
+    removeToCart,
+    updateQuantityIncrement,
+    index,
+    updateQuantityDecrement,
+  } = useCart();
+
+  return (
+    <div className="page-container w-[1200px] m-auto ">
+      <h1 className="text-center font-bold text-[30px] text-gray-700">
+        Giỏ Hàng
+      </h1>
+      <div className=" flex  ">
+        <div>
+          {cartItems &&
+            cartItems.length > 0 &&
+            cartItems.map((item) => {
+              return (
+                <div className="">
+                  <div
+                    className=" flex w-[600px] m-2 h-[400px] mr-[100px] border rounded-2xl   "
+                    key={uuidv4()}
+                  >
+                    {/* colse */}
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-9 cursor-pointer w-9 "
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      onClick={() => {
+                        removeToCart(item._id, item.mausac, item.dungLuong);
+                      }}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+
+                    {/* <div className="onClick={() => {
+                          removeToCart(item._id, item.ram, item.color);
+                        }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 cursor-pointer " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    </div> */}
+                    <div className=" flex">
+                      <img src={`../images/${item.hinhanh}`} alt="Error"></img>
+                    </div>
+                    <div className="">
+                      <span className="text-gray-900 text-3xl text-[20px]">
+                        {item.productInfo.tenSanPham}
+                      </span>
+                      <br />
+                      <span className="text-gray-700 text-lg text-[20px]">
+                        Màu Sắc :{item.mausac}
+                      </span>
+                      <br />
+                      <span className="text-gray-700 text-lg text-[20px]">
+                        Phiên Bản :{item.dungLuong}
+                      </span>
+                      <div className="flex ">
+                        <p className="text-red-500  font-bold ">
+                          {converCurences(item.donGia)} đ
+                        </p>
+                      </div>
+                      <div className="flex">
+                        Số Lượng:{" "}
+                        <div className=" flex border ml-3 h-10">
+                          <button
+                            type="button"
+                            aria-label="Decrement value"
+                            className="w-[25px] flex items-center justify-center"
+                            onClick={() =>
+                              updateQuantityDecrement(index, cartItems)
+                            }
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="w-3 h-3 "
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </button>
+                          <input
+                            value={item.quantity}
+                            // data-value={quantity}
+                            className="w-[25px] outline-none border-none h-full text-center"
+                          ></input>
+                          <button
+                            aria-label="Increment value"
+                            type="button"
+                            className="w-[25px] flex items-center justify-center"
+                            onClick={(e) => {
+                              updateQuantityIncrement(index, cartItems);
+                            }}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="w-4 h-4 "
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          <div className="flex  justify-between  text-[20px] w-[500px]  ">
+            Tổng Tiền:
+            <div className="text-red-500 px-10 font-bold ">
+              {converCurences(totalPrice())}đ
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="  w-[500px] group   ">
+            <div>
+              <ul className=" font-bold  text-gray-700  m-4 p-2 rounded-sm group text-center">
+                Thông Tin Đặt Hàng
+              </ul>
+            </div>
+            <div>
+              <div className="text-gray-400 text-center">
+                <span>Bạn cần nhập đầy đủ các trường thông tin có dấu *</span>
+                <br />
+              </div>
+              <div className="">
+                <>
+                  <div>
+                    <input
+                      type="text"
+                      name=""
+                      placeholder="Nhập Họ Và Tên *"
+                      className="py-3 px-12 border boder-gray-300 rounded-lg  my-2 w-[100%] "
+                    />
+                  </div>
+                </>
+                <>
+                  <div>
+                    <input
+                      type="text"
+                      name=""
+                      placeholder="Nhập Số Điện Thoại *"
+                      className="py-3 px-12 border boder-gray-300 rounded-lg w-[100%] my-2"
+                    />
+                  </div>
+                </>
+                <>
+                  <div>
+                    <input
+                      type="text"
+                      name=""
+                      placeholder="Nhập Địa Chỉ Nhận Hàng *"
+                      className="py-3 px-12 border boder-gray-300 rounded-lg w-[100%] my-2"
+                    />
+                  </div>
+                </>
+                <>
+                  <div>
+                    <input
+                      type="text"
+                      name=""
+                      placeholder="Nhập Địa Chỉ Email *"
+                      className="py-3 px-12 border boder-gray-300 rounded-lg w-[100%] my-2"
+                    />
+                  </div>
+                </>
+              </div>
+
+              <div className="">
+                <>
+                  <div>
+                    <textarea
+                      type="textarea"
+                      placeholder="Ghi Chú"
+                      className="border border-gray-300 rounded-lg w-[100%] h-[100px] px-[5px]"
+                    />
+                  </div>
+                </>
+              </div>
+            </div>
+            <br />
+            <div className="flex mb-20 ml-20 mr-20 gap-x-10 font-bold text-2xl">
+              <button
+                type="submit"
+                className="px-4 py-2 w-full font-bold text-2xl rounded-md bg-gray-700 text-white  hover:bg-gray-400 hover:text-gray-800 ansition-all"
+              >
+                Xác Nhận Và Đặt Hàng
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Cart;

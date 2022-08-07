@@ -4,6 +4,7 @@ const category = require("./category");
 const productdetails = require("./productdetails");
 const promotion = require("./promotion");
 const guarantee = require("./guarantee");
+const order = require("./order");
 const { db } = require("../models/category");
 const { connect } = require("mongoose");
 
@@ -16,8 +17,9 @@ function routes (app) {
     app.use("/api/productdetailss", productdetails)
     app.use("/api/promotions", promotion)
     app.use("/api/guarantees", guarantee)
+    app.use("/api/order", order);
     
-}
+} 
 
 
 module.exports = routes

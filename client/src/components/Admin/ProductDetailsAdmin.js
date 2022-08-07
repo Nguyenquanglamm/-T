@@ -1,15 +1,16 @@
 import axios from "axios";
-import { converCurences } from "../config";
+import { converCurences } from "../../config";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { useCart } from "../context/Cartcontext";
-const ProductsDetails = () => {
+import { useCart } from "../../context/Cartcontext";
+const ProductsDetailsAdmin = () => {
   const { addToCart } = useCart();
   const [dataPro, setData] = useState();
   const { productId } = useParams();
   const [indexCap, setIndexCap] = useState(0);
   const [indexColor, setIndexColor] = useState(0);
+  
   const handleAddtoCart = (dataProduct) => {
     console.log(dataProduct);
     dataProduct = {
@@ -57,7 +58,7 @@ const ProductsDetails = () => {
               >
                 <div>
                   <img
-                    src={`../images/${dataPro?.hinhanh[indexColor]}`}
+                    src={`/images/${dataPro?.hinhanh[indexColor]}`}
                     alt=""
                     className=" justify-items-center w-[500px]  object-cover rounded-lg-50 py-11 group-hover:-translate-y-2 ease-out duration-300"
                   ></img>
@@ -69,7 +70,7 @@ const ProductsDetails = () => {
                       return (
                         <div className="w-full h-full" key={uuidv4()}>
                           <img
-                            src={`../images/${img}`}
+                            src={`/images/${img}`}
                             alt=""
                             className="w-full h-full object-cover"
                           ></img>
@@ -81,9 +82,10 @@ const ProductsDetails = () => {
 
               <div className="wrap-details">
                 <div className=" mb-5 text-2xl">
-                  <Dongia
-                    item={converCurences(dataPro && dataPro?.donGia[indexCap])}
-                  ></Dongia>
+                  <Dongia item={converCurences(dataPro && dataPro?.donGia[indexCap])}
+                  >
+                    đ
+                  </Dongia>
                 </div>
                 <p>Lựa chọn phiên bản</p>
                 <div className="flex gap-x-5  mb-5 mt-3 cursor-pointer ">
@@ -114,7 +116,7 @@ const ProductsDetails = () => {
                   })}
                 </div>
                 {/* <div className="flex gap-x-5  mb-5 mt-3 cursor-pointer">
-                  {dataPro.promotion.noidung.map((item, i) => {
+                  {dataPro.productInfo.noidung.map((item, i) => {
                     return (
                       <Khuyenmai
                         item={item}
@@ -143,59 +145,15 @@ const ProductsDetails = () => {
               </div>
             </div>
           )}
-          <div className=" border border-gray-400 ml-20 p-4 w-[288px] ">
-            <h4 className=" text-center">Thông Tin Bảo Hành</h4><br/>
-            <p className=" flex">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                />
-              </svg>{" "}
-              Bảo hành 12 tháng chính hãng
-            </p>
-            <div className=" flex">
-            <a  href="/baohanh">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                />
-              </svg>
-            </a>
-              Bao xài lỗi 1 đổi 1 trong 30 ngày với lỗi phần cứng do nhà sản
-              xuất.
-              </div>
-          </div>
         </div>
       </div>
+      
     </div>
   );
 };
 
 function Dongia({ item }) {
-  return (
-    <span className="py-2 px-4 text-red-600 rounded-lg">
-      {item}
-      {" đ"}
-    </span>
-  );
+  return <span className="py-2 px-4 text-red-600 rounded-lg">{item} {" đ"}</span>;
 }
 
 function DungLuong({ item, index, indexCap, setIndexCap }) {
@@ -243,4 +201,4 @@ function Khuyenmai({ item, index, indexColor, setIndexColor }) {
   );
 }
 
-export default ProductsDetails;
+export default ProductsDetailsAdmin;

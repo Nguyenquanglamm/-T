@@ -11,6 +11,7 @@ global.category = require("./models/category");
 global.ProductDetails = require("./models/productdetails");
 global.promotion = require("./models/promotion");
 global.guarantee = require("./models/guarantee");
+global.order = require("./models/order");
 
 const routes = require("./routes");
 

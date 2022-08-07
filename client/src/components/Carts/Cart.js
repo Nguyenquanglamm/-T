@@ -1,16 +1,36 @@
 import React from "react";
+import axios from "axios";
 import { useCart } from "../../context/Cartcontext";
 import { v4 as uuidv4 } from "uuid";
 import { converCurences } from "../../config";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const {
     cartItems,
     totalPrice,
     removeToCart,
     updateQuantityIncrement,
-    index,
     updateQuantityDecrement,
+    handleQuantityChange,
+    clearAllData,
   } = useCart();
+  const {navigate} = useNavigate();
+  const { register, handleSubmit } = useForm();
+
+  const handleFormSubmit = (data) => {
+    data = {
+      ...data,
+      tongtien: totalPrice(),
+      thongtinchitiet: cartItems,
+    };
+    axios.post("/api/order", data).then((res) => {
+      if (res.status === 200) {
+        clearAllData();
+        navigate("/");
+      }
+    });
+  };
 
   return (
     <div className="page-container w-[1200px] m-auto ">
@@ -21,9 +41,9 @@ const Cart = () => {
         <div>
           {cartItems &&
             cartItems.length > 0 &&
-            cartItems.map((item) => {
+            cartItems.map((item, index) => {
               return (
-                <div className="">
+                <div className="" key={uuidv4()}>
                   <div
                     className=" flex w-[600px] m-2 h-[400px] mr-[100px] border rounded-2xl   "
                     key={uuidv4()}
@@ -103,6 +123,13 @@ const Cart = () => {
                           <input
                             value={item.quantity}
                             // data-value={quantity}
+                            onChange={(e) => {
+                              handleQuantityChange(
+                                index,
+                                cartItems,
+                                e.target.value
+                              );
+                            }}
                             className="w-[25px] outline-none border-none h-full text-center"
                           ></input>
                           <button
@@ -142,80 +169,72 @@ const Cart = () => {
         </div>
         <div>
           <div className="  w-[500px] group   ">
-            <div>
-              <ul className=" font-bold  text-gray-700  m-4 p-2 rounded-sm group text-center">
-                Thông Tin Đặt Hàng
-              </ul>
-            </div>
-            <div>
-              <div className="text-gray-400 text-center">
-                <span>Bạn cần nhập đầy đủ các trường thông tin có dấu *</span>
-                <br />
+            <form onSubmit={handleSubmit(handleFormSubmit)}>
+              <div>
+                <ul className=" font-bold  text-gray-700  m-4 p-2 rounded-sm group text-center">
+                  Thông Tin Đặt Hàng
+                </ul>
               </div>
-              <div className="">
-                <>
-                  <div>
-                    <input
-                      type="text"
-                      name=""
-                      placeholder="Nhập Họ Và Tên *"
-                      className="py-3 px-12 border boder-gray-300 rounded-lg  my-2 w-[100%] "
-                    />
-                  </div>
-                </>
-                <>
-                  <div>
-                    <input
-                      type="text"
-                      name=""
-                      placeholder="Nhập Số Điện Thoại *"
-                      className="py-3 px-12 border boder-gray-300 rounded-lg w-[100%] my-2"
-                    />
-                  </div>
-                </>
-                <>
-                  <div>
-                    <input
-                      type="text"
-                      name=""
-                      placeholder="Nhập Địa Chỉ Nhận Hàng *"
-                      className="py-3 px-12 border boder-gray-300 rounded-lg w-[100%] my-2"
-                    />
-                  </div>
-                </>
-                <>
-                  <div>
-                    <input
-                      type="text"
-                      name=""
-                      placeholder="Nhập Địa Chỉ Email *"
-                      className="py-3 px-12 border boder-gray-300 rounded-lg w-[100%] my-2"
-                    />
-                  </div>
-                </>
-              </div>
+              <div>
+                <div className="text-gray-400 text-center">
+                  <span>Bạn cần nhập đầy đủ các trường thông tin có dấu *</span>
+                  <br />
+                </div>
+                <div className="">
+                  <>
+                    <div>
+                      <input
+                        type="text"
+                        {...register("tenkhachhang")}
+                        placeholder="Nhập Họ Và Tên *"
+                        className="py-3 px-12 border boder-gray-300 rounded-lg  my-2 w-[100%] "
+                      />
+                    </div>
+                  </>
+                  <>
+                    <div>
+                      <input
+                        type="text"
+                        {...register("sdt")}
+                        placeholder="Nhập Số Điện Thoại *"
+                        className="py-3 px-12 border boder-gray-300 rounded-lg w-[100%] my-2"
+                      />
+                    </div>
+                  </>
+                  <>
+                    <div>
+                      <input
+                        type="text"
+                        {...register("diachi")}
+                        placeholder="Nhập Địa Chỉ Nhận Hàng *"
+                        className="py-3 px-12 border boder-gray-300 rounded-lg w-[100%] my-2"
+                      />
+                    </div>
+                  </>
+                  <>
+                    <div>
+                      <input
+                        type="text"
+                        {...register("email")}
+                        placeholder="Nhập Địa Chỉ Email *"
+                        className="py-3 px-12 border boder-gray-300 rounded-lg w-[100%] my-2"
+                      />
+                    </div>
+                  </>
+                </div>
 
-              <div className="">
-                <>
-                  <div>
-                    <textarea
-                      type="textarea"
-                      placeholder="Ghi Chú"
-                      className="border border-gray-300 rounded-lg w-[100%] h-[100px] px-[5px]"
-                    />
-                  </div>
-                </>
+                <div className=""></div>
               </div>
-            </div>
-            <br />
-            <div className="flex mb-20 ml-20 mr-20 gap-x-10 font-bold text-2xl">
-              <button
-                type="submit"
-                className="px-4 py-2 w-full font-bold text-2xl rounded-md bg-gray-700 text-white  hover:bg-gray-400 hover:text-gray-800 ansition-all"
-              >
-                Xác Nhận Và Đặt Hàng
-              </button>
-            </div>
+              <br />
+              <div className="flex mb-20 ml-20 mr-20 gap-x-10 font-bold text-2xl">
+                <button
+                  type="submit"
+                  className="px-4 py-2 w-full font-bold text-2xl rounded-md bg-gray-700 text-white  hover:bg-gray-400 hover:text-gray-800 ansition-all"
+                >
+                  Xác Nhận Và Đặt Hàng
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

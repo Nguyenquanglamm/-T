@@ -1,5 +1,6 @@
 import React from 'react';
-const Base = ( { children } ) => {
+import { NavLink, Outlet } from 'react-router-dom';
+const Base = () => {
     return (
     <div>
         <nav className="bg-gray-800 w-[1200px] h-[72px] m-auto ">
@@ -24,36 +25,11 @@ const Base = ( { children } ) => {
                     
                     
 
-                <div className="">
+                <div className=" ">
                     <button className="text-gray-300  hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium w-[100px] h-[80px] ">
-                        <a href="/" className="">Trang chủ</a >
-                    </button>
-                    <button className="text-gray-300  hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium w-[100px] h-[80px]">
-                        <a href="/product" className="">Sản phẩm</a >
-                    </button>
-                    <button className="text-gray-300  hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium w-[170px] h-[80px]">
-                        <a href="/guarantee" className="">Danh sách bảo hành</a >
+                        <NavLink to="/" className="">Trang chủ</NavLink >
                     </button>
                     
-                    <div className="dropdown inline-block relative">
-                        <button className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium  ">
-                        <span className="">Danh mục</span>
-                        </button>
-                        <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
-                            <li className="">
-                            <a className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/productDetails">Chi tiết sản phẩm</a>
-                            </li>
-                            <li className="">
-                            <a className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/baohanh">Chính sách bảo hành</a>
-                            </li>
-                            <li className="">
-                            <a className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="/khuyenmai">Khuyến mại</a>
-                            </li>
-                            <li className="">
-                            <a className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap w-[200px]" href="/category">Loại sản phẩm</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             </div>
@@ -62,8 +38,8 @@ const Base = ( { children } ) => {
                     <div className="mx-auto max-w-md">
                     <form action="" className="relative mx-auto w-max">
                         <input type="search" 
-                            className=" text-blue-100 peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-lime-300 focus:pl-16 focus:pr-4" />
-                        <svg xmlns="http://www.w3.org/2000/svg" className="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-lime-300 peer-focus:stroke-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            className=" text-blue-100 peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-gray-300 focus:pl-16 focus:pr-4" />
+                        <svg xmlns="http://www.w3.org/2000/svg" className="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 peer-focus:border-gray-300 peer-focus:stroke-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </form>
@@ -77,7 +53,14 @@ const Base = ( { children } ) => {
                 </svg>
                 </button> */}
                 <a  href='/cart' className=" ">
-                    <img src="https://img.icons8.com/windows/45/000000/shopping-cart.png" className="mt-2"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className=" h-10 w-10"
+                  viewBox="0 0 24 15"
+                  fill="#C0C0C0"
+                >
+                  <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                </svg>{" "}
                 </a>
                 <div className=" inline-block ml-3 relative mt-4">
                 <div className="dropdown inline-block relative">
@@ -117,7 +100,7 @@ const Base = ( { children } ) => {
             </div>
         </div>
         </nav>
-        {children}
+        {<Outlet></Outlet>}
         <div className='w-[1200px] m-auto'>
         <footer className="text-center lg:text-left bg-gray-800 text-gray-300">
             <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
@@ -125,7 +108,7 @@ const Base = ( { children } ) => {
                 <span>Kết nối với chúng tôi trên mạng xã hội:</span>
                 </div>
                 <div className="flex justify-center">
-                <a href="" className="mr-6 text-gray-300">
+                <a href="https://www.facebook.com/nguyenquanglam199" className="mr-6 text-gray-300">
                     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
                     className="w-2.5" role="img" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 320 512">

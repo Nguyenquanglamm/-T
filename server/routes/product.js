@@ -3,7 +3,7 @@ const express = require("express");
 
 const routes = express.Router();
 
-routes.get("/", productBuilder.list_all_products);
+routes.get("/", productBuilder.getAllProducts, productBuilder.getAllCategorys);
 routes.get("/:productId", productBuilder.read_a_product);
 routes.post("/", productBuilder.uploadImage, productBuilder.create_a_product);
 routes.put("/:productId", productBuilder.update_a_product);

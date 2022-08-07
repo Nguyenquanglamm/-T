@@ -29,6 +29,41 @@ exports.list_all_products = (req, res) => {
   });
 };
 
+exports.getAllProducts =  (req,res) => {
+  product.aggregate([
+    {
+      $lookup :{
+        from:"promotion",
+        localField:"promotionid",
+        foreignField:"_id",
+        as: "promotion"
+      }
+    },
+    {$unwind :"$promotion"}
+  ],(err, product)=> {
+    if(err) res.send(err);
+    res.json(product); 
+  })
+}
+
+exports.getAllCategorys =  (req,res) => {
+  product.aggregate([
+    {
+      $lookup :{
+        from:"category",
+        localField:"categoryid",
+        foreignField:"_id",
+        as: "category"
+      }
+    },
+    {$unwind :"$category"}
+  ],(err, product)=> {
+    if(err) res.send(err);
+    res.json(product); 
+  })
+}
+
+
 exports.create_a_product = (req, res) => {
   console.log(req.body);
   const newproduct = new product({

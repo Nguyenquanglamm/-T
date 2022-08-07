@@ -67,6 +67,7 @@ const Products = () => {
   };
   return (
     <div>
+    
       <div className=" grid grid-cols-5 page-container w-[1200px] m-auto text-center text-l cursor-pointer ">
         <a href="" className="hover:bg-slate-600 hover:text-slate-200 rounded-md border p-2">APPLE</a>
         <a href="" className="hover:bg-slate-600 hover:text-slate-200 rounded-md border p-2">SAMSUNG</a>
@@ -81,25 +82,26 @@ const Products = () => {
             return (
               <div
               key={item._id}
-              className="text-black text-center border  m-4 p-2 flex flex-col  group "
+              className="text-black text-center border  m-4 p-2 flex flex-col group "
               onClick={() => {
                 navigate(`/product/${item._id}`);
               }}
               >
-                <div>
+                <div className="">
                   <img
                     src={`./images/${item.hinhanh}`}
                     alt=""
-                    className=" justify-items-center w-700 object-cover rounded-lg-50 py-11 group-hover:-translate-y-2 ease-out duration-300"
+                    className=" justify-items-center w-700 object-cover rounded-lg-50  group-hover:-translate-y-2 ease-out duration-300"
                   ></img>
                 </div>
                 <div className="flex flex-col mt-auto">
                   <div>
-                    <span> {item.tenSanPham} </span>
+                    <span> {item.tenSanPham} </span><br/>
                     <br />
                   </div>
-                  <div className="py-2 flex items-center gap-x-2 justify-center mt-auto"></div>
+                  <div className=" flex items-center gap-x-2 justify-center mt-auto"></div>
                 </div>
+                <span className=" hidden group-hover:block text-red-600 ">{item.promotion.noidung}</span>
               </div>
             );
           })}

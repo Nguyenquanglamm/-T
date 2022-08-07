@@ -28,6 +28,7 @@ const CreateProductDetai = () => {
   }, []);
   return (
     <form onSubmit={handleSubmit(handleOnSubmit)} encType="multipart/form-data" className="w-[1200px] m-auto">
+      <div className=" text-center text-3xl mt-2">Chi Tiết Sản Phẩm</div>
       <select
         id="idSanPham"
         {...register("idSanPham")}

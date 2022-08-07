@@ -2,9 +2,10 @@ import React from 'react';
 
 const Baohanh = () => {
     return (
-        <div className="mb-10 mt-2">
+        <div className="mb-10 mt-2 ml-5 ">
+            <div className=" text-center text-3xl mt-2">Chính Sách Bảo Hành</div>
             <div className=" w-[1200px] m-auto ">
-                <div className=" font-medium">Điều kiện đổi mới và trả lại :</div>
+                <div className=" font-extrabold ">Điều kiện đổi mới và trả lại :</div>
                 <p>
                 Hình thức máy và hộp máy như mới<br/>
                     Phụ kiện và các loại quà tặng đi kèm: còn đầy đủ, nguyên vẹn, không có dấu hiệu móp mép, cong vênh<br/>
@@ -12,13 +13,13 @@ const Baohanh = () => {
                     Máy đã được gỡ các loại tài khoản cá nhân như iCloud, Gmail, Mi account …<br/>
                     Lỗi điểm chết màn hình : màn hình có từ 3 điểm chết trở lên hoặc 1 điểm chết có kích thước lớn hơn 1mm.<br/>
                 </p><br/>
-                <div className=" font-medium">Nguyên tắc bảo hành :</div>
+                <div className=" font-extrabold ">Nguyên tắc bảo hành :</div>
                 <p>
                     •  Sản phẩm được bảo hành miễn phí nếu sản phẩm đó còn thời hạn bảo hành được tính từ ngày quý khách mua hàng.<br/>
                     •  Khi đổi sản phẩm, thời hạn bảo hành còn lại của sản phẩm cũ được chuyển sang sản phẩm tương đương + gia hạn thêm thời hạn gửi tại trung tâm bảo hành.<br/>
                     •  Chính sách bảo hành của Shop chỉ áp dụng cho các sản phẩm do Shop cung cấp.<br/>
                 </p>
-                <div className=" font-medium">Điều kiện bảo hành :</div>
+                <div className=" font-extrabold ">Điều kiện bảo hành :</div>
                 <p>
                 •  Bảo hành do lỗi vật liệu và gia công trên sản phẩm trong điều kiện sử dụng bình thường. Những lỗi xảy ra do sử dụng không đúng với quy cách của nhà sản xuất (chập, cháy, nổ) đều không được bảo hành.<br/>
 
@@ -44,7 +45,7 @@ const Baohanh = () => {
 
 •  Không áp dụng bảo hành đối với cảm ứng và màn hình của máy vì nguyên nhân thường do bị tác động không mong muốn bởi các yếu tố bên ngoài như: nhiệt độ, độ ẩm nguồn điện và cách sử dụng.<br/>
 
-•  Mất phiếu bảo hành của sản phẩm. Sản phẩm không thể xác định được nguồn gốc mua tại Hoàng Hà Mobile một cách hợp lệ.<br/>
+•  Mất phiếu bảo hành của sản phẩm. Sản phẩm không thể xác định được nguồn gốc mua tại Shop một cách hợp lệ.<br/>
                 </p>
             </div>
         </div>

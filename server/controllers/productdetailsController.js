@@ -85,6 +85,40 @@ exports.delete_a_productdetails = (req, res) => {
   });
 };
 
+exports.UpdateQuantity = (req, res) =>{
+  console.log(req.params)
+  productdetails.updateOne({
+    productdetailsId : new mongoose.Types.ObjectId(req.params.infoId),
+    mausac : req.params.mausac,
+    dungluong : req.params.dungluong,
+  },
+  {
+    $inc:{ soLuong: -req.params.quantity}
+  },
+  (err,proInfo)=>{
+    if (err) res.send(err);
+    console.log(proInfo);
+    res.json(proInfo);
+  }
+  );
+};
+
+exports.getAllProductDetails =  (req,res) => {
+  productdetails.aggregate([
+    {
+      $lookup :{
+        from:"product",
+        localField:"idSanPham",
+        foreignField:"_id",
+        as: "product"
+      }
+    },
+    {$unwind :"$product"}
+  ],(err, productdetails)=> {
+    if(err) res.send(err);
+    res.json(productdetails); 
+  })
+}
 
 exports.getInfoPro = (req,res) => {
   productdetails.aggregate([

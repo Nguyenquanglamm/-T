@@ -1,36 +1,52 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
 
-import {useForm} from "react-hook-form"
-
-const Products = () => {
+const ProductAdmin = () => {
   const [data, setData] = useState([]);
   const [dataCate, setDataCate] = useState([]);
+  const [notiDele, setNotiDele] = useState(true);
   const [dataPromotion, setDataPromotion] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     axios.get("/api/products").then((res) => {
       setData(res.data);
     });
-    
-  }, []);
+  }, [notiDele]);
+
+  const notify = () =>
+    toast.error("Xóa thành công", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  const handleDelete = (item) => {
+    axios.delete(`/api/products/${item}`).then((res) => {
+      if (res.status === 200) notify();
+      setNotiDele(!notiDele);
+    });
+  };
+
   // Lấy dữ liệu từ collection categorys
   useEffect(() => {
     axios.get("/api/categorys").then((res) => {
       setDataCate(res.data);
     });
-    
   }, []);
 
   useEffect(() => {
     axios.get("/api/promotions").then((res) => {
       setDataPromotion(res.data);
     });
-    
   }, []);
 
-  const{ handleSubmit, register} = useForm();
+  const { handleSubmit, register } = useForm();
 
   console.log(data);
   const [tenSanPham, settenSanPham] = useState();
@@ -67,18 +83,20 @@ const Products = () => {
     formData.append("hinhanh", file);
     axios.post("/api/products", formData).then((data) => {
       console.log(data);
+      if (data.status===200) setNotiDele(!notiDele);
     });
-  }
+  };
 
   const handleSetFile = (e) => {
     setFile(e.target.files[0]);
   };
   return (
     <div className=" w-[1200px] m-auto">
-      <div className="flex page-container  items-center gap-x-5">
-        
-      </div>
-      <form onSubmit={handleSubmit(handleOnSubmit)} encType="multipart/form-data">
+      <div className="flex page-container  items-center gap-x-5"></div>
+      <form
+        onSubmit={handleSubmit(handleOnSubmit)}
+        encType="multipart/form-data"
+      >
         <input
           type="text"
           name="tenSanPham"
@@ -89,8 +107,12 @@ const Products = () => {
           className="py-3 px-12 border boder-gray-300 rounded-lg mx-2 my-2"
         />
 
-        <select id="categoryid" {...register("categoryid")} className="py-3 px-12 border border-gray-300 rounded-lg mx-2 my-2">
-          <option value="" >Loại sản phẩm</option>
+        <select
+          id="categoryid"
+          {...register("categoryid")}
+          className="py-3 px-12 border border-gray-300 rounded-lg mx-2 my-2"
+        >
+          <option value="">Loại sản phẩm</option>
           {dataCate &&
             dataCate.length > 0 &&
             dataCate.map((item) => {
@@ -102,8 +124,12 @@ const Products = () => {
             })}
         </select>
 
-        <select id="promotionid" {...register("promotionid")} className="py-3 px-12 border border-gray-300 rounded-lg mx-2 my-2">
-          <option value="" >Khuyến mại</option>
+        <select
+          id="promotionid"
+          {...register("promotionid")}
+          className="py-3 px-12 border border-gray-300 rounded-lg mx-2 my-2"
+        >
+          <option value="">Khuyến mại</option>
           {dataPromotion &&
             dataPromotion.length > 0 &&
             dataPromotion.map((item) => {
@@ -114,13 +140,11 @@ const Products = () => {
               );
             })}
         </select>
-        
-        
-        
+
         <input type="file" name="hinhanh" onChange={handleSetFile} />
         <button
           type="submit"
-          className="bg-gray-400 text-black  hover:bg-gray-600  px-3 py-2 text-base font-medium"
+          className="bg-gray-400 rounded-lg text-black  hover:bg-gray-600 hover:text-white  px-3 py-2 text-base font-medium"
         >
           Thêm Sản Phẩm
         </button>
@@ -130,27 +154,47 @@ const Products = () => {
           data.length > 0 &&
           data.map((item) => {
             return (
-              <div
-                key={item._id}
-                className="text-black text-center border  m-4 p-2 flex flex-col  group "
-                onClick={() => {
-                  navigate(`/product/${item._id}`);
-                }}
-              >
-                <div>
+              <div className=" mb-16 m-2 border">
+                <div
+                  key={item._id}
+                  className="text-black text-center   m-4 p-2 flex flex-col  group "
+                  onClick={() => {
+                    navigate(`./${item._id}`);
+                  }}
+                >
                   <img
                     src={`../images/${item.hinhanh}`}
                     alt=""
-                    className=" justify-items-center w-700 object-cover rounded-lg-50 py-11 group-hover:-translate-y-2 ease-out duration-300"
+                    className=" justify-items-center w-700 object-cover rounded-lg-50 py-0 group-hover:-translate-y-2 ease-out duration-300"
                   ></img>
                 </div>
                 <div className="flex flex-col mt-auto">
-                  <div>
-                    <span> {item.tenSanPham} </span>
-                    <span> {item.promotion.noidung} </span>
+                  <div className=" text-center">
+                    <span>{item.tenSanPham} </span>
+                    <br />
                     <br />
                   </div>
                   <div className="py-2 flex items-center gap-x-2 justify-center mt-auto"></div>
+                </div>
+                
+                  <span className=" text-red-600 font-semibold ">{item.promotion.noidung}</span>
+                
+                <div>
+
+          <button
+            href="productDetails"
+            className="h-10 w-full mb-2 px-6 font-semibold rounded-md  bg-gray-500 text-white  hover:bg-blue-800    "
+          >
+            Thêm chi tiết
+          </button>
+          <button
+            className="h-10 w-full  px-6 font-semibold rounded-md bg-gray-500 text-white  hover:bg-red-800 "
+            onClick={() => {
+              handleDelete(item._id);
+            }}
+          >
+            Xóa
+          </button>
                 </div>
               </div>
             );
@@ -160,4 +204,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductAdmin;

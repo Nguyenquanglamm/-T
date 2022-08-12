@@ -61,9 +61,7 @@ const Login = () => {
                 />
               </div>
             </div>
-            <div class="text-sm  text-right">
-              <a href="/register" class=" font-medium text-indigo-600 hover:text-indigo-500"> Đăng ký </a>
-            </div>
+           
             <div>
               <button
                 type="submit"

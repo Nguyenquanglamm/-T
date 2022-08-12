@@ -20,7 +20,6 @@ const Products = () => {
     axios.get("/api/categorys").then((res) => {
       setDataCate(res.data);
     });
-    
   }, []);
 
   useEffect(() => {

@@ -148,6 +148,7 @@ const ProductsDetailsAdmin = () => {
         </div>
       </div>
       
+      
     </div>
   );
 };

@@ -18,6 +18,8 @@ import ProductAdmin from './components/Admin/ProductAdmin';
 import ProductsDetailsAdmin from './components/Admin/ProductDetailsAdmin';
 import HomeAdmin from './components/Admin/HomeAdmin';
 import Warehouse from './components/Admin/Warehouse';
+import Statistics from './components/Statistics';
+import WarehouseDetail from './components/Admin/WarehouseDetail';
 
 
 function App() {
@@ -35,12 +37,14 @@ function App() {
         <Route path="khuyenmai" element={<Khuyenmais></Khuyenmais>}></Route>
         <Route path="baohanh" element={<BaoHanh></BaoHanh>}></Route>
         <Route path="productDetails" element={<CreateProductDetai></CreateProductDetai>}></Route>
-        <Route pWarehouseath="cart" element={<Cart />}></Route>
+        <Route path="cart" element={<Cart />}></Route>
         <Route path="login" element={<Login />}></Route>
         <Route path="register" element={<Register />}></Route>    
         <Route path="product/:productId" element={<ProductsDetailsAdmin></ProductsDetailsAdmin>}></Route>
-        <Route path='orderlist' element={<Orderlist></Orderlist>}></Route>
-        <Route path='warehouse' element={<Warehouse></Warehouse>}></Route>
+        <Route path="orderlist" element={<Orderlist></Orderlist>}></Route>
+        <Route path="warehouse" element={<Warehouse></Warehouse>}></Route>
+        <Route path="statistics" element={<Statistics></Statistics>}></Route>
+        <Route path="warehousedetail/:idSanPham" element={<WarehouseDetail></WarehouseDetail>}></Route>
       </Route>
 
       <Route path="/" element={<Base/>}>

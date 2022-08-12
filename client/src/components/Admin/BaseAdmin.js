@@ -89,7 +89,7 @@ const Base = ({ children }) => {
                         <li className="">
                           <NavLink
                             className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap w-[200px]"
-                            to="warehouse"
+                            to="statistics"
                           >
                             Thống kê - Báo cáo
                           </NavLink>

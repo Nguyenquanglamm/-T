@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import {useForm} from "react-hook-form"
+import Statistics from "../Statistics";
 
 
 const ProductsAdmin = () => {
@@ -25,7 +26,6 @@ const ProductsAdmin = () => {
 
   const{ handleSubmit, register} = useForm();
 
-  console.log(data);
   const [tenSanPham, settenSanPham] = useState();
   const [categoryid, setcategoryid] = useState();
   const [soLuong, setsoLuong] = useState();
@@ -66,7 +66,7 @@ const ProductsAdmin = () => {
     setFile(e.target.files[0]);
   };
   return (
-    <div>
+    <div className="w-[1200px] m-auto">
       <div className=" grid grid-cols-5 page-container w-[1200px] m-auto text-center text-l cursor-pointer ">
         <a href="" className="hover:bg-slate-600 hover:text-slate-200 rounded-md border p-2">APPLE</a>
         <a href="" className="hover:bg-slate-600 hover:text-slate-200 rounded-md border p-2">SAMSUNG</a>
@@ -102,9 +102,11 @@ const ProductsAdmin = () => {
                 </div>
                 <span className=" hidden group-hover:block text-red-600 ">{item.promotion.noidung}</span>
               </div>
+              
             );
           })}
       </div>
+      <Statistics></Statistics>
     </div>
   );
 };

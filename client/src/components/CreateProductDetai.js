@@ -6,7 +6,7 @@ const CreateProductDetai = () => {
   const [dataPro, setDataPro] = useState([]);
   const { handleSubmit, register } = useForm();
 
-  const handleOnSubmit = (data) => {
+  const handleOnSubmit = async (data) => {
     const formData = new FormData();
     formData.append("idSanPham", data.idSanPham);
     formData.append("mausac", data.mausac);
@@ -15,10 +15,16 @@ const CreateProductDetai = () => {
     formData.append("soLuong", data.soLuong);
     formData.append("hinhanh", data.hinhanh[0]);
 
-    console.log(data);
-    axios.post("/api/productdetailss", formData).then((data) => {
-      console.log(data);
-    });
+    const checkDetails = await axios.get(
+      `/api/productdetailss/checkDetails/proID=${data.idSanPham}&mausac=${data.mausac}&dungluong=${data.dungluong}`
+    );
+    if (checkDetails.data.length === 0) {
+      await axios.post("/api/productdetailss", formData).then((data) => {
+        console.log(data)
+      });
+      return;
+    }
+      alert("Chi tiết của sản phẩm này đã có trong kho")
   };
 
   useEffect(() => {
@@ -27,7 +33,11 @@ const CreateProductDetai = () => {
     });
   }, []);
   return (
-    <form onSubmit={handleSubmit(handleOnSubmit)} encType="multipart/form-data" className="w-[1200px] m-auto">
+    <form
+      onSubmit={handleSubmit(handleOnSubmit)}
+      encType="multipart/form-data"
+      className="w-[1200px] m-auto"
+    >
       <div className=" text-center text-3xl mt-2">Chi Tiết Sản Phẩm</div>
       <select
         id="idSanPham"

@@ -3,10 +3,12 @@ import axios from "axios";
 import { converCurences } from "../../config";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Warehouse = () => {
   const [data, setData] = useState();
   const [notiDele, setNotiDele] = useState(true);
+  const navigate = useNavigate();
   const notify = () =>
     toast.error("Xóa thành công", {
       position: "top-right",
@@ -25,8 +27,9 @@ const Warehouse = () => {
   const handleDelete = (item) => {
     console.log(item._id);
     axios.delete(`/api/products/${item._id}`).then((res) => {
-      if (res.status === 200) notify();
-      setNotiDele(!notiDele);
+      // if (res.status === 200) notify();
+      // setNotiDele(!notiDele);
+      console.log(res);
     });
   };
   return (
@@ -76,16 +79,11 @@ const Warehouse = () => {
                         <th className=" border text-lg font-semibold text-white py-4   ">
                           Tên sản phẩm
                         </th>
-                        <th className=" border text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4 ">
-                          Chi tiết sản phẩm
-                        </th>
+
                         <th className=" border text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4 ">
                           Số lượng
                         </th>
-                        <th className=" border text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4  ">
-                          Đơn Giá
-                        </th>
-                        <th className=" border text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4  "></th>
+                        <th className=" border text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4 "></th>
                       </tr>
                     </thead>
                     {data && data.length > 0 && (
@@ -99,19 +97,35 @@ const Warehouse = () => {
                               <th className=" border text-lg font-semibold text-black py-4   ">
                                 {item.product.tenSanPham}
                               </th>
-                              <th className=" border text-lg font-semibold text-black py-4 lg:py-7 px-3 lg:px-4 ">
-                                {item.dungluong}
-                                {"  "}-{"  "}
-                                {item.mausac}
-                              </th>
+
                               <th className=" border text-lg font-semibold text-black py-4 lg:py-7 px-3 lg:px-4 ">
                                 {item.soLuong}
                               </th>
-                              <th className="  text-lg font-semibold text-black py-4 lg:py-7 px-3 lg:px-4  ">
-                                {converCurences(item.donGia)}đ/1 Chiếc
-                              </th>
+
                               <th>
-                                <div className=" flex  justify-between border  text-dark font-medium text-base py-8 px-2 ">
+                                <div className=" flex  justify-between   text-dark font-medium text-base py-8 px-2 ">
+                                 
+                                  
+                                    <svg
+                                    type="button"
+                                    onClick={() => {
+                                      navigate(
+                                        `/admin/warehousedetail/${item._id}`
+                                      );
+                                    }}
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      className="h-6 w-6 cursor-pointer"
+                                      fill="none"
+                                      viewBox="0 0 20 24"
+                                      stroke="currentColor"
+                                      strokeWidth={2}
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                      />
+                                    </svg>
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="h-6 w-6 cursor-pointer"

@@ -26,7 +26,6 @@ const Categorys = () => {
   }, [notiDele]);
 
   const handleDelete = (item) => {
-    console.log(item._id);
     axios.delete(`/api/categorys/${item._id}`).then((res) => {
       if (res.status === 200) notify();
       setNotiDele(!notiDele);
@@ -39,6 +38,8 @@ const Categorys = () => {
       if (data.status === 200) setNotiDele(!notiDele);
     });
   };
+
+
   return (
     <div className=" w-[1200px] m-auto ">
       <div className=" text-center text-3xl mt-2">Loại Sản Phẩm</div>
@@ -67,9 +68,9 @@ const Categorys = () => {
               <div
                 key={item._id}
                 className="text-black hover:bg-slate-100 border  m-4 p-2 flex flex-col  group  flex-direction "
-                // onClick={() => {
-                //  navigate(`/category/${item._id}`);
-                // }}
+                onClick={() => {
+                 navigate(`${item._id}`);
+                }}
               >
                 <div className="flex justify-between ">
                   <div className=" mt-4">

@@ -47,3 +47,65 @@ exports.delete_a_order = (req, res) => {
     });
   });
 };
+exports.getProfitMonthly = (req, res) => {
+  order.aggregate(
+      [
+        {
+          $project: {
+            trangthai: 1,
+            ngaytao: { $month: "$ngaytao" },
+            tongtien: 1,
+          },
+        },
+        {
+          $match: {
+            trangthai: "Hoàn thành",
+          },
+        },
+        {
+          $group: {
+            _id: "$ngaytao",
+            ngaytao: { $first: "$ngaytao" },
+            tongtien: { $sum: "$tongtien" },
+          },
+        },
+      ],
+      (err, order) => {
+        if (err) res.send(err);
+        res.json(order);
+      }
+    )
+    .sort({ _id: 1 });
+};
+
+exports.getProfitByDay = (req, res) =>{
+  order.aggregate(
+    [
+      {
+        $project: {
+          trangthai: 1,
+          month: { $month: "$ngaytao" },
+          day: { $dayOfMonth: "$ngaytao" },
+          tongtien: 1,
+        },
+      },
+      {
+        $match: {
+          trangthai: "Hoàn thành",
+        },
+      },
+      {
+        $group: {
+          _id: "$day",
+          ngaytao: { $first: "$day" },
+          tongtien: { $sum: "$tongtien" },
+        },
+      },
+    ],
+    (err,order) => {
+      if(err) res.send(err);
+      res.json(order);
+    }
+  )
+  .sort({_id: 1});
+}

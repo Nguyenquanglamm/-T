@@ -83,7 +83,7 @@ const ProductAdmin = () => {
     formData.append("hinhanh", file);
     axios.post("/api/products", formData).then((data) => {
       console.log(data);
-      if (data.status===200) setNotiDele(!notiDele);
+      if (data.status === 200) setNotiDele(!notiDele);
     });
   };
 
@@ -93,10 +93,12 @@ const ProductAdmin = () => {
   return (
     <div className=" w-[1200px] m-auto">
       <div className="flex page-container  items-center gap-x-5"></div>
+      
       <form
         onSubmit={handleSubmit(handleOnSubmit)}
         encType="multipart/form-data"
       >
+
         <input
           type="text"
           name="tenSanPham"
@@ -149,12 +151,21 @@ const ProductAdmin = () => {
           Thêm Sản Phẩm
         </button>
       </form>
-      <div className="  grid grid-cols-5 page-container w-[1200px]   ">
+      <div className="  grid  grid-cols-5 page-container w-[1200px]   ">
+        
         {data &&
           data.length > 0 &&
           data.map((item) => {
             return (
-              <div className=" mb-16 m-2 border">
+              <div className=" mb-16 rounded-md m-2 border ">
+                <div className="w-full">
+                  <a
+                    href="productDetails"
+                    className=" block text-center  mb-2 px-6 font-semibold rounded-md  bg-gray-500 text-white  hover:bg-green-800    "
+                  >
+                    Thêm chi tiết
+                  </a>
+                </div>
                 <div
                   key={item._id}
                   className="text-black text-center   m-4 p-2 flex flex-col  group "
@@ -176,25 +187,28 @@ const ProductAdmin = () => {
                   </div>
                   <div className="py-2 flex items-center gap-x-2 justify-center mt-auto"></div>
                 </div>
-                
-                  <span className=" text-red-600 font-semibold ">{item.promotion.noidung}</span>
-                
-                <div>
 
-          <button
-            href="productDetails"
-            className="h-10 w-full mb-2 px-6 font-semibold rounded-md  bg-gray-500 text-white  hover:bg-blue-800    "
-          >
-            Thêm chi tiết
-          </button>
-          <button
-            className="h-10 w-full  px-6 font-semibold rounded-md bg-gray-500 text-white  hover:bg-red-800 "
-            onClick={() => {
-              handleDelete(item._id);
-            }}
-          >
-            Xóa
-          </button>
+                <span className=" text-red-600 font-semibold ">
+                  {item.promotion.noidung}
+                </span>
+                
+                <div className=" flex justify-between">
+                  <button
+                    className="h-10 w-[50%] border px-6 font-semibold rounded-md bg-gray-500 text-white  hover:bg-blue-800 "
+                    onClick={() => {
+                      handleDelete(item._id);
+                    }}
+                  >
+                    Sửa
+                  </button>
+                  <button
+                    className="h-10 w-[50%] border px-6 font-semibold rounded-md bg-gray-500 text-white  hover:bg-red-800 "
+                    onClick={() => {
+                      handleDelete(item._id);
+                    }}
+                  >
+                    Xóa
+                  </button>
                 </div>
               </div>
             );

@@ -20,8 +20,7 @@ const Orderlist = () => {
     console.log(e.target.value);
     if (e.target.value === "Hoàn thành") {
       item.thongtinchitiet.forEach((el) => {
-        axios.put(
-          `/api/productdetailss/updateQuantity/infoId=${el.productInfo._id}&mausac=${el.mausac}&dungluong=${el.dungLuong}&quantity=${el.quantity}`
+        axios.put(`/api/productdetailss/updateQuantity/infoId=${el.productInfo._id}&mausac=${el.mausac}&dungluong=${el.dungLuong}&quantity=${el.quantity}`
         );
       });
     }

@@ -105,6 +105,36 @@ exports.UpdateQuantity = (req, res) =>{
 
 exports.getAllProductDetails =  (req,res) => {
   productdetails.aggregate([
+    
+    {
+      $group:{
+        _id:"$idSanPham",
+        mausac:{$addToSet:"$mausac"},
+        dungluong:{$addToSet:"$dungluong"},
+        donGia:{$addToSet:"$donGia"},
+        soLuong:{$sum: "$soLuong"}
+      }
+    },
+    {
+      $lookup :{
+        from:"product",
+        localField:"_id",
+        foreignField:"_id",
+        as: "product"
+      }
+    },
+    {$unwind :"$product"}
+  ],(err, productdetails)=> {
+    if(err) res.send(err);
+    res.json(productdetails); 
+  })
+}
+exports.getProductDetails =  (req,res) => {
+  productdetails.aggregate([
+    {
+      $match: {
+        idSanPham: mongoose.Types.ObjectId(req.params.idSanPham),},
+    },
     {
       $lookup :{
         from:"product",
@@ -133,7 +163,7 @@ exports.getInfoPro = (req,res) => {
         hinhanh : {$push : "$hinhanh"},
         donGia: {$addToSet :"$donGia"},
         dungLuong:{$addToSet :"$dungluong"},
-        mausac:{$addToSet:"$mausac"}
+        mausac:{$addToSet:"$mausac"},
       }
     },
     {
@@ -149,5 +179,28 @@ exports.getInfoPro = (req,res) => {
   ],(err, productdetailss) => {
     if (err) res.send(err);
     res.json(productdetailss);
+  })
+}
+
+exports.checkProductDetails = (req,res) => {
+  console.log(req.params)
+  productdetails.aggregate([
+    {
+      $project:{
+        idSanPham:1,
+        mausac:1,
+        dungluong:1,
+      }
+    },
+    {
+      $match: {
+        idSanPham: mongoose.Types.ObjectId(req.params.proID),
+        mausac:req.params.mausac,
+        dungluong:req.params.dungluong
+      }
+    }
+  ],(err,result)=> {
+    if(err) res.send(err)
+    res.json(result)
   })
 }

@@ -77,7 +77,7 @@ const WarehouseDetail = () => {
                 <div className="max-w-full overflow-x-auto overflow">
                   <table className="table-auto  w-full">
                     <thead>
-                      <tr className="bg-gray-500  text-center">
+                      <tr className="bg-[#3D8361]  text-center">
                         <th className=" border text-lg font-semibold text-white py-4   ">
                           Tên sản phẩm
                         </th>
@@ -132,6 +132,9 @@ const WarehouseDetail = () => {
                                   <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
+                                    onClick={() =>{
+                                      navigate(`/Admin/updateproductdetailsadmin/${item._id}`);
+                                    }}
                                     d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                                   />
                                 </svg>
@@ -165,20 +168,6 @@ const WarehouseDetail = () => {
                       navigate(`/admin/warehouse`);
                     }}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"
-                      />
-                    </svg>
                     Quay lại
                   </button>
                 </div>

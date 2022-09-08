@@ -15,7 +15,7 @@ const Login = () => {
         <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
         <div className="max-w-[500px] w-full space-y-8 z-[9999] bg-white p-10 rounded-lg overflow-hidden">
           <div>
-          <a href="">
+          <a href="/">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6  " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -33,17 +33,17 @@ const Login = () => {
             <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px ">
               <div>
-                <label for="email-address" className="sr-only">
-                  Email address
+                <label for="" className="sr-only">
+                  
                 </label>
                 <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
+                  id=""
+                  name="text"
+                  type="text"
+                  autocomplete="text"
                   required
                   className=" mb-2 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Địa chỉ Email"
+                  placeholder="Tài Khoản"
                 />
               </div>
               <div>

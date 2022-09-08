@@ -17,6 +17,11 @@ const productSchema = new Schema(
       ref: "promotion",
       required: "Không để trống",
     },
+    supplierid: {
+      type: Schema.Types.ObjectId,
+      ref: "supplier",
+      required: "Không để trống",
+    },
     hinhanh: {
       type: String,
       require:"k"

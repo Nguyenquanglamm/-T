@@ -20,7 +20,10 @@ const orderSchema = new Schema({
         type: String,
         requried: true
     },
-    
+    hinhThucThanhToan: {
+        type: String,
+        required: "Bạn Chưa Chọn Hình Thức Thanh Toán",
+      },
     tongtien: {
         type: Number,        
     },

@@ -69,7 +69,7 @@ const Orderlist = () => {
               <div className="max-w-full overflow-x-auto overflow">
                 <table className="table-auto  w-full">
                   <thead>
-                    <tr className="bg-gray-500  text-center">
+                    <tr className="bg-[#3D8361]  text-center">
                       <th
                         className="
                            w-1/6
@@ -145,6 +145,21 @@ const Orderlist = () => {
                            "
                       >
                         Thông tin chi tiết
+                      </th>
+                      <th
+                        className="
+                           w-1/8
+                           min-w-[115px]
+                           text-lg
+                           font-semibold
+                           text-white
+                           py-4
+                           lg:py-7
+                           px-3
+                           lg:px-4
+                           "
+                      >
+                        Hình thức thanh toán
                       </th>
                       <th
                         className="
@@ -268,6 +283,19 @@ const Orderlist = () => {
                                   </tr>
                                 );
                               })}
+                            </td>
+                            <td
+                              className=" 
+                     text-center text-dark
+                     font-medium
+                     text-base
+                     py-5
+                     px-2
+                     bg-[#fff] border
+                      border-[#494040]
+                     "
+                            >
+                              {item.hinhThucThanhToan}
                             </td>
                             <td
                               className=" 

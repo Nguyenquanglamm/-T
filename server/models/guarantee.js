@@ -12,7 +12,7 @@ const guaranteeSchema = new Schema(
         required: "Tên khách hàng Không Được Để Trống",
     },
     sdt: {
-        type :Number,
+        type :String,
         required: "Không để được để trống"
     },
     ngaynhan: {

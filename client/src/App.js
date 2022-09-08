@@ -15,11 +15,14 @@ import Base from './components/Base';
 import BaseAdmin from './components/Admin/BaseAdmin';
 import Orderlist from './components/Admin/Orderlist';
 import ProductAdmin from './components/Admin/ProductAdmin';
-import ProductsDetailsAdmin from './components/Admin/ProductDetailsAdmin';
 import HomeAdmin from './components/Admin/HomeAdmin';
 import Warehouse from './components/Admin/Warehouse';
 import Statistics from './components/Statistics';
 import WarehouseDetail from './components/Admin/WarehouseDetail';
+import UpdateProductAdmin from './components/Admin/UpdateProductAdmin';
+import UpdateProductDetailsAdmin from './components/Admin/UpdateProductDetailsAdmin';
+import Supplier from './components/Supplier';
+import Ordersuccess from './components/Ordersuccess';
 
 
 function App() {
@@ -40,10 +43,12 @@ function App() {
         <Route path="cart" element={<Cart />}></Route>
         <Route path="login" element={<Login />}></Route>
         <Route path="register" element={<Register />}></Route>    
-        <Route path="product/:productId" element={<ProductsDetailsAdmin></ProductsDetailsAdmin>}></Route>
         <Route path="orderlist" element={<Orderlist></Orderlist>}></Route>
         <Route path="warehouse" element={<Warehouse></Warehouse>}></Route>
         <Route path="statistics" element={<Statistics></Statistics>}></Route>
+        <Route path="supplier" element={<Supplier></Supplier>}></Route>
+        <Route path="updateproductadmin/:idSanPham" element={<UpdateProductAdmin></UpdateProductAdmin>}></Route>
+        <Route path="updateproductdetailsadmin/:idSanPham" element={<UpdateProductDetailsAdmin></UpdateProductDetailsAdmin>}></Route>
         <Route path="warehousedetail/:idSanPham" element={<WarehouseDetail></WarehouseDetail>}></Route>
       </Route>
 
@@ -56,6 +61,8 @@ function App() {
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/ordersuccess" element={<Ordersuccess></Ordersuccess>}></Route>
+
       </Route>
 
     </Routes>

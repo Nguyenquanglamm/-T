@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 const Base = () => {
     return (
     <div>
-        <nav className="bg-gray-800 w-[1200px] h-[72px] m-auto ">
+        <nav className="bg-[#00483d] w-[1200px] h-[72px] m-auto ">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -26,10 +26,9 @@ const Base = () => {
                     
 
                 <div className=" ">
-                    <button className="text-gray-300  hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium w-[100px] h-[80px] ">
+                    <button className=" text-white  hover:text-gray-300 px-3 py-2 text-sm font-medium w-[100px] h-[80px] ">
                         <NavLink to="/" className="">Trang chủ</NavLink >
                     </button>
-                    
                 </div>
             </div>
             </div>
@@ -62,28 +61,8 @@ const Base = () => {
                   <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                 </svg>{" "}
                 </a>
-                <div className=" inline-block ml-3 relative mt-4">
-                <div className="dropdown inline-block relative">
-                    <button type="button" className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                        <img className="  h-8 w-8 rounded-full" src="https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/281353875_1420279645100104_6981697707244189631_n.jpg?stp=dst-jpg_s526x395&_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=rycBOXjt7qkAX8LfJWu&_nc_ht=scontent.fhan2-3.fna&oh=00_AT-em1xAGgSyShiEerbSXn3i9d6s6moisDlC2J1X8zJFtg&oe=62E8CA3D" alt="">
-                        </img>
-                    </button>
-                        <ul className="dropdown-menu absolute hidden text-gray-700 pt-1 right-0 ">
-                            <li className="">
-                            <a className="bg-gray-600 text-gray-100 hover:bg-gray-100 hover:text-gray-500 py-2 px-4 block whitespace-no-wrap w-[200px]" href="/">Hồ sơ của bạn</a>
-                            </li>
-                            <li className="">
-                            <a className="bg-gray-600 text-gray-100 hover:bg-gray-100 hover:text-gray-500 py-2 px-4 block whitespace-no-wrap w-[200px]" href="/login">Đăng nhập</a>
-                            </li>
-                            <li className="">
-                            <a className="bg-gray-600 text-gray-100 hover:bg-gray-100 hover:text-gray-500 py-2 px-4 block whitespace-no-wrap w-[200px]" href="/">Đăng xuất</a>
-                            </li>
-                        </ul>
-                    </div>
-                
-
-                
-                
+                <div className=" inline-block ml-3 relative">
+                    <a className=" text-white  hover:text-gray-300 px-3 py-2 text-sm font-medium w-[100px] h-[80px] " href="/login">Đăng nhập</a>
                 </div>
             </div>
             </div>
@@ -91,24 +70,24 @@ const Base = () => {
 
         <div className="sm:hidden" id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1">
-            <a href="/" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium">Trang chủ</a>
+            <a href="/" className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium">Trang chủ</a>
 
-            <a href="/product" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium">Sản phẩm</a>
+            <a href="/product" className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium">Sản phẩm</a>
 
-            <a href="/" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium">Danh mục</a>
+            <a href="/" className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium">Danh mục</a>
 
             </div>
         </div>
         </nav>
         {<Outlet></Outlet>}
         <div className='w-[1200px] m-auto'>
-        <footer className="text-center lg:text-left bg-gray-800 text-gray-300">
+        <footer className="text-center lg:text-left bg-[#00483d] text-white">
             <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
                 <div className="mr-12 hidden lg:block">
                 <span>Kết nối với chúng tôi trên mạng xã hội:</span>
                 </div>
                 <div className="flex justify-center">
-                <a href="https://www.facebook.com/nguyenquanglam199" className="mr-6 text-gray-300">
+                <a href="https://www.facebook.com/nguyenquanglam199" className="mr-6 text-white">
                     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
                     className="w-2.5" role="img" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 320 512">
@@ -117,7 +96,7 @@ const Base = () => {
                     </path>
                     </svg>
                 </a>
-                <a href="" className="mr-6 text-gray-300">
+                <a href="" className="mr-6 text-white">
                     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter"
                     className="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path fill="currentColor"
@@ -125,7 +104,7 @@ const Base = () => {
                     </path>
                     </svg>
                 </a>
-                <a href="" className="mr-6 text-gray-300">
+                <a href="" className="mr-6 text-white">
                     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google"
                     className="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
                     <path fill="currentColor"
@@ -133,7 +112,7 @@ const Base = () => {
                     </path>
                     </svg>
                 </a>
-                <a href="" className="mr-6 text-gray-300">
+                <a href="" className="mr-6 text-white">
                     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
                     className="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path fill="currentColor"
@@ -141,7 +120,7 @@ const Base = () => {
                     </path>
                     </svg>
                 </a>
-                <a href="" className="mr-6 text-gray-300">
+                <a href="" className="mr-6 text-white">
                     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in"
                     className="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512">
@@ -150,7 +129,7 @@ const Base = () => {
                     </path>
                     </svg>
                 </a>
-                <a href="" className="text-gray-300">
+                <a href="" className="text-white">
                     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
                     className="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
                     <path fill="currentColor"
@@ -161,45 +140,23 @@ const Base = () => {
                 </div>
             </div>
             <div className="mx-6 py-10 text-center md:text-left">
-                <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div className="">
-                    <h6 className="
-                        uppercase
-                        font-semibold
-                        mb-4
-                        flex
-                        items-center
-                        justify-center
-                        md:justify-start
-                    ">
-                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cubes"
-                        className="w-4 mr-3" role="img" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512">
-                        <path fill="currentColor"
-                        d="M488.6 250.2L392 214V105.5c0-15-9.3-28.4-23.4-33.7l-100-37.5c-8.1-3.1-17.1-3.1-25.3 0l-100 37.5c-14.1 5.3-23.4 18.7-23.4 33.7V214l-96.6 36.2C9.3 255.5 0 268.9 0 283.9V394c0 13.6 7.7 26.1 19.9 32.2l100 50c10.1 5.1 22.1 5.1 32.2 0l103.9-52 103.9 52c10.1 5.1 22.1 5.1 32.2 0l100-50c12.2-6.1 19.9-18.6 19.9-32.2V283.9c0-15-9.3-28.4-23.4-33.7zM358 214.8l-85 31.9v-68.2l85-37v73.3zM154 104.1l102-38.2 102 38.2v.6l-102 41.4-102-41.4v-.6zm84 291.1l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6zm240 112l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6z">
-                        </path>
-                    </svg>
-                    Tailwind ELEMENTS
-                    </h6>
-                    <p>
-                    Tại đây, bạn có thể sử dụng các hàng và cột để sắp xếp nội dung chân trang của mình.
-                    </p>
-                </div>
+                <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              
                 <div className="">
                     <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
                     Hỗ Trợ - Dịch Vụ
                     </h6>
                     <p className="mb-4">
-                    <a href="" className="text-gray-300">Mua hàng trả góp</a>
+                    <a href="" className="text-white">Mua hàng trả góp</a>
                     </p>
                     <p className="mb-4">
-                    <a href="" className="text-gray-300">Tra cứu đơn hàng</a>
+                    <a href="" className="text-white">Tra cứu đơn hàng</a>
                     </p>
                     <p className="mb-4">
-                    <a href="/baohanh" className="text-gray-300">Chính sách bảo hành</a>
+                    <a href="/baohanh" className="text-white">Chính sách bảo hành</a>
                     </p>
                     <p>
-                    <a href="" className="text-gray-300">Chính sách giải quyết khuyến mại</a>
+                    <a href="" className="text-white">Chính sách giải quyết khuyến mại</a>
                     </p>
                 </div>
                 <div className="">
@@ -207,16 +164,16 @@ const Base = () => {
                     Thông Tin Liên Hệ
                     </h6>
                     <p className="mb-4">
-                    <a href="" className="text-gray-300">Bán hàng Online</a>
+                    <a href="" className="text-white">Bán hàng Online</a>
                     </p>
                     <p className="mb-4">
-                    <a href="" className="text-gray-300">Chăm sóc Khách Hàng</a>
+                    <a href="" className="text-white">Chăm sóc Khách Hàng</a>
                     </p>
                     <p className="mb-4">
-                    <a href="" className="text-gray-300">Hỗ Trợ Kỹ thuật</a>
+                    <a href="" className="text-white">Hỗ Trợ Kỹ thuật</a>
                     </p>
                     <p>
-                    <a href="" className="text-gray-300">Hỗ trợ Bảo hành & Sửa chữa</a>
+                    <a href="" className="text-white">Hỗ trợ Bảo hành & Sửa chữa</a>
                     </p>
                 </div>
                 <div className="">
@@ -265,11 +222,11 @@ const Base = () => {
                 </div>
                 </div>
             </div>
-            <div className="text-center p-6 bg-gray-800">
+            <div className="text-center p-6 bg-[#00483d]">
                 <span>© 2022. CÔNG TY CỔ PHẦN XÂY DỰNG VÀ ĐẦU TƯ THƯƠNG MẠI
                 </span><br/>
                 <span>Địa chỉ : Lễ Độ - Kim Anh - Kim Thành - Hải Dương</span>
-                <p className="text-gray-300 font-semibold" ></p>
+                <p className="text-white font-semibold" ></p>
             </div>
             </footer>
         </div>

@@ -129,7 +129,7 @@ const ProductsDetails = () => {
 
                 <button
                   type="button"
-                  className="px-4 py-2 font-semibold rounded-md border border-black text-black  hover:bg-gray-300  transition-all"
+                  className="px-4 py-2 font-semibold rounded-md border  bg-[#00483d] text-white  hover:bg-[#3D8361]  transition-all"
                   onClick={() => {
                     handleAddtoCart({
                       ...dataPro,

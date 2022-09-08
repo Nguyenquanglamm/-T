@@ -9,6 +9,7 @@ const ProductAdmin = () => {
   const [dataCate, setDataCate] = useState([]);
   const [notiDele, setNotiDele] = useState(true);
   const [dataPromotion, setDataPromotion] = useState([]);
+  const [dataSupplier, setDataSupplier] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     axios.get("/api/products").then((res) => {
@@ -46,6 +47,13 @@ const ProductAdmin = () => {
     });
   }, []);
 
+  useEffect(() => {
+    axios.get("/api/supplier").then((res) => {
+      setDataSupplier(res.data);
+    });
+  }, []);
+
+
   const { handleSubmit, register } = useForm();
 
   console.log(data);
@@ -76,6 +84,7 @@ const ProductAdmin = () => {
     formData.append("tenSanPham", tenSanPham);
     formData.append("categoryid", data.categoryid);
     formData.append("promotionid", data.promotionid);
+    formData.append("supplierid", data.supplierid);
     formData.append("soLuong", soLuong);
     formData.append("donGia", donGia);
     formData.append("mausac", mausac);
@@ -127,6 +136,23 @@ const ProductAdmin = () => {
         </select>
 
         <select
+          id="supplierid"
+          {...register("supplierid")}
+          className="py-3 px-12 border border-gray-300 rounded-lg mx-2 my-2"
+        >
+          <option value="">Nhà cung cấp</option>
+          {dataSupplier &&
+            dataSupplier.length > 0 &&
+            dataSupplier.map((item) => {
+              return (
+                <option value={item._id} key={item._id}>
+                  {item.tennhacungcap}
+                </option>
+              );
+            })}
+        </select>
+
+        <select
           id="promotionid"
           {...register("promotionid")}
           className="py-3 px-12 border border-gray-300 rounded-lg mx-2 my-2"
@@ -146,7 +172,7 @@ const ProductAdmin = () => {
         <input type="file" name="hinhanh" onChange={handleSetFile} />
         <button
           type="submit"
-          className="bg-gray-400 rounded-lg text-black  hover:bg-gray-600 hover:text-white  px-3 py-2 text-base font-medium"
+          className="bg-[#00483d] text-white  hover:bg-[#3D8361] rounded-lg  px-3 py-2 text-base font-medium"
         >
           Thêm Sản Phẩm
         </button>
@@ -196,7 +222,7 @@ const ProductAdmin = () => {
                   <button
                     className="h-10 w-[50%] border px-6 font-semibold rounded-md bg-gray-500 text-white  hover:bg-blue-800 "
                     onClick={() => {
-                      handleDelete(item._id);
+                      navigate(`/Admin/updateproductadmin/${item._id}`);
                     }}
                   >
                     Sửa

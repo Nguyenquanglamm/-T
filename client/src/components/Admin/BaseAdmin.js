@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 const Base = ({ children }) => {
   return (
     <div>
-      <nav className="bg-gray-800 w-[1200px] h-[72px] m-auto relative ">
+      <nav className="bg-[#00483d] w-[1200px] h-[72px] m-auto relative ">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -51,20 +51,20 @@ const Base = ({ children }) => {
               <div className="hidden sm:block sm:ml-6">
                 <div className="flex space-x-4">
                   <div className="">
-                    <button className="text-gray-300  hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium w-[100px] h-[80px] ">
+                    <button className="text-white  hover:bg-[#00483d] hover:text-white px-3 py-2 text-sm font-medium w-[100px] h-[80px] ">
                       <a href="/admin" className="">
                         Trang chủ
                       </a>
                     </button>
 
                     <div className="dropdown inline-block relative">
-                      <button className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium  ">
+                      <button className="text-white hover:bg-[#00483d] hover:text-white px-3 py-2 text-sm font-medium ">
                         <span className="">Danh mục</span>
                       </button>
-                      <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
+                      <ul className="dropdown-menu absolute hidden text-white pt-1 shadow-md rounded-lg ">
                         <li className="">
                           <NavLink
-                            className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                            className="bg-white text-gray-700 hover:bg-[#498077] hover:text-white py-2 px-4 block whitespace-no-wrap  "
                             to="orderlist"
                           >
                             Quản lý đơn hàng
@@ -72,7 +72,7 @@ const Base = ({ children }) => {
                         </li>
                         <li className="">
                           <NavLink
-                            className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                            className="bg-white text-gray-700 hover:bg-[#498077] hover:text-white py-2 px-4 block whitespace-no-wrap  "
                             to="guarantee"
                           >
                             Quản lý bảo hành
@@ -80,7 +80,7 @@ const Base = ({ children }) => {
                         </li>
                         <li className="">
                           <NavLink
-                            className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap w-[200px]"
+                            className="bg-white text-gray-700 hover:bg-[#498077] hover:text-white py-2 px-4 block whitespace-no-wrap w-[200px]  "
                             to="warehouse"
                           >
                             Quản lý kho hàng
@@ -88,7 +88,7 @@ const Base = ({ children }) => {
                         </li>
                         <li className="">
                           <NavLink
-                            className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap w-[200px]"
+                            className="bg-white text-gray-700 hover:bg-[#498077] hover:text-white py-2 px-4 block whitespace-no-wrap w-[200px]  "
                             to="statistics"
                           >
                             Thống kê - Báo cáo
@@ -97,13 +97,13 @@ const Base = ({ children }) => {
                       </ul>
                     </div>
                     <div className="dropdown inline-block relative">
-                      <button className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium  ">
+                      <button className="text-white hover:bg-[#00483d] hover:text-white px-3 py-2 text-sm font-medium  ">
                         <span className="">Quản lý sản phẩm</span>
                       </button>
-                      <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
+                      <ul className="dropdown-menu absolute hidden text-white pt-1 shadow-md rounded-lg ">
                         <li className="">
                           <NavLink
-                            className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                            className="bg-white text-gray-700 hover:bg-[#498077] hover:text-white py-2 px-4 block whitespace-no-wrap w-[200px] "
                             to="product"
                           >
                             Sản phẩm
@@ -111,7 +111,7 @@ const Base = ({ children }) => {
                         </li>
                         <li className="">
                           <NavLink
-                            className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                            className="bg-white text-gray-700 hover:bg-[#498077] hover:text-white py-2 px-4 block whitespace-no-wrap w-[200px] "
                             to="productDetails"
                           >
                             Chi tiết sản phẩm
@@ -119,7 +119,7 @@ const Base = ({ children }) => {
                         </li>
                         <li className="">
                           <NavLink
-                            className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap w-[200px]"
+                            className="bg-white text-gray-700 hover:bg-[#498077] hover:text-white py-2 px-4 block whitespace-no-wrap w-[200px]"
                             to="category"
                           >
                             Loại sản phẩm
@@ -127,7 +127,7 @@ const Base = ({ children }) => {
                         </li>
                         <li className="">
                           <NavLink
-                            className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                            className="bg-white text-gray-700 hover:bg-[#498077] hover:text-white py-2 px-4 block whitespace-no-wrap w-[200px] "
                             to="baohanh"
                           >
                             Chính sách bảo hành
@@ -135,10 +135,18 @@ const Base = ({ children }) => {
                         </li>
                         <li className="">
                           <NavLink
-                            className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                            className="bg-white text-gray-700 hover:bg-[#498077] hover:text-white py-2 px-4 block whitespace-no-wrap w-[200px] "
                             to="khuyenmai"
                           >
                             Khuyến mại
+                          </NavLink>
+                        </li>
+                        <li className="">
+                          <NavLink
+                            className="bg-white text-gray-700 hover:bg-[#498077] hover:text-white py-2 px-4 block whitespace-no-wrap w-[200px] "
+                            to="supplier"
+                          >
+                            Nhà cung cấp
                           </NavLink>
                         </li>
                       </ul>
@@ -239,16 +247,16 @@ const Base = ({ children }) => {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <a
               href="/"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium"
+              className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium"
             >
               Trang chủ
             </a>
             {/* 
-            <NavLink href="product" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium">Sản phẩm</NavLink> */}
+            <NavLink href="product" className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium">Sản phẩm</NavLink> */}
 
             <a
               href="/"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium"
+              className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 text-base font-medium"
             >
               Danh mục
             </a>
@@ -257,7 +265,7 @@ const Base = ({ children }) => {
       </nav>
       {<Outlet />}
       <div className="w-[1200px] m-auto">
-        <footer className="text-center lg:text-left bg-gray-800 text-gray-300">
+        <footer className="text-center lg:text-left bg-[#00483d] text-white">
           <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
             <div className="mr-12 hidden lg:block">
               <span>Kết nối với chúng tôi trên mạng xã hội:</span>
@@ -265,7 +273,7 @@ const Base = ({ children }) => {
             <div className="flex justify-center">
               <a
                 href="https://www.facebook.com/nguyenquanglam199"
-                className="mr-6 text-gray-300"
+                className="mr-6 text-white"
               >
                 <svg
                   aria-hidden="true"
@@ -283,7 +291,7 @@ const Base = ({ children }) => {
                   ></path>
                 </svg>
               </a>
-              <a href="" className="mr-6 text-gray-300">
+              <a href="" className="mr-6 text-white">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -300,7 +308,7 @@ const Base = ({ children }) => {
                   ></path>
                 </svg>
               </a>
-              <a href="" className="mr-6 text-gray-300">
+              <a href="" className="mr-6 text-white">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -317,7 +325,7 @@ const Base = ({ children }) => {
                   ></path>
                 </svg>
               </a>
-              <a href="" className="mr-6 text-gray-300">
+              <a href="" className="mr-6 text-white">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -334,7 +342,7 @@ const Base = ({ children }) => {
                   ></path>
                 </svg>
               </a>
-              <a href="" className="mr-6 text-gray-300">
+              <a href="" className="mr-6 text-white">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -351,7 +359,7 @@ const Base = ({ children }) => {
                   ></path>
                 </svg>
               </a>
-              <a href="" className="text-gray-300">
+              <a href="" className="text-white">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -411,22 +419,22 @@ const Base = ({ children }) => {
                   Hỗ Trợ - Dịch Vụ
                 </h6>
                 <p className="mb-4">
-                  <a href="" className="text-gray-300">
+                  <a href="" className="text-white">
                     Mua hàng trả góp
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="" className="text-gray-300">
+                  <a href="" className="text-white">
                     Tra cứu đơn hàng
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="/baohanh" className="text-gray-300">
+                  <a href="/baohanh" className="text-white">
                     Chính sách bảo hành
                   </a>
                 </p>
                 <p>
-                  <a href="" className="text-gray-300">
+                  <a href="" className="text-white">
                     Chính sách giải quyết khuyến mại
                   </a>
                 </p>
@@ -436,22 +444,22 @@ const Base = ({ children }) => {
                   Thông Tin Liên Hệ
                 </h6>
                 <p className="mb-4">
-                  <a href="" className="text-gray-300">
+                  <a href="" className="text-white">
                     Bán hàng Online
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="" className="text-gray-300">
+                  <a href="" className="text-white">
                     Chăm sóc Khách Hàng
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="" className="text-gray-300">
+                  <a href="" className="text-white">
                     Hỗ Trợ Kỹ thuật
                   </a>
                 </p>
                 <p>
-                  <a href="" className="text-gray-300">
+                  <a href="" className="text-white">
                     Hỗ trợ Bảo hành & Sửa chữa
                   </a>
                 </p>
@@ -535,11 +543,11 @@ const Base = ({ children }) => {
               </div>
             </div>
           </div>
-          <div className="text-center p-6 bg-gray-800">
+          <div className="text-center p-6 bg-[#00483d]">
             <span>© 2022. CÔNG TY CỔ PHẦN XÂY DỰNG VÀ ĐẦU TƯ THƯƠNG MẠI</span>
             <br />
             <span>Địa chỉ : Lễ Độ - Kim Anh - Kim Thành - Hải Dương</span>
-            <p className="text-gray-300 font-semibold"></p>
+            <p className="text-white font-semibold"></p>
           </div>
         </footer>
       </div>

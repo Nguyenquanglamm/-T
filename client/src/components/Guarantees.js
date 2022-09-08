@@ -62,7 +62,7 @@ const Guarantees = () => {
           className="py-3 px-12 border boder-gray-300 rounded-lg mx-2 my-2"
         />
         <input
-          type="text"
+          type="tel"
           {...register("sdt")}
           placeholder="Nhập số điện thoại của khách"
           className="py-3 px-12 border boder-gray-300 rounded-lg mx-2 my-2"
@@ -81,7 +81,7 @@ const Guarantees = () => {
         />
         <button
           type="submit"
-          className="py-3 px-12 border boder-gray-300 rounded-lg mx-2 my-2 bg-gray-600 text-white  hover:bg-gray-400 hover:text-black"
+          className="py-3 px-12 border boder-gray-300 rounded-lg mx-2 my-2 bg-[#00483d] text-white  hover:bg-[#3D8361]"
         >
           Thêm Bảo Hành
         </button>
@@ -130,7 +130,7 @@ const Guarantees = () => {
                   <div className="max-w-full overflow-x-auto overflow">
                     <table className="table-auto  w-full">
                       <thead>
-                        <tr className="bg-gray-500  text-center">
+                        <tr className="bg-[#3D8361]  text-center">
                           <th className="  text-lg font-semibold text-white py-4   ">
                             Tên khách hàng
                           </th>

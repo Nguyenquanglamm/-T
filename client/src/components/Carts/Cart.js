@@ -222,6 +222,34 @@ const Cart = () => {
                     </div>
                   </>
                 </div>
+                <div>
+                  <p>Hình Thức Thanh Toán*</p>
+                  <div className="flex justify-around ">
+                    <div className="">
+                      <input
+                        required
+                        type="radio"
+                        {...register("hinhThucThanhToan")}
+                        value="ShipCOD"
+                        id="COD"
+                      />
+                      <label htmlFor="COD">
+                        Ship COD
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        {...register("hinhThucThanhToan")}
+                        value="Internet Banking"
+                        id="Banking"
+                      />
+                      <label htmlFor="Banking">
+                       Internet Banking
+                      </label>
+                    </div>
+                  </div>
+                </div>
 
                 <div className=""></div>
               </div>
@@ -229,7 +257,7 @@ const Cart = () => {
               <div className="flex mb-20 ml-20 mr-20 gap-x-10 font-bold text-2xl">
                 <button
                   type="submit"
-                  className="px-4 py-2 w-full font-bold text-2xl rounded-md bg-gray-700 text-white  hover:bg-gray-400 hover:text-gray-800 ansition-all"
+                  className="px-4 py-2 w-full font-bold text-2xl rounded-md bg-[#00483d] text-white hover:bg-[#23685c] hover:text-white transition-all"
                 >
                   Xác Nhận Và Đặt Hàng
                 </button>

@@ -75,7 +75,7 @@ const Warehouse = () => {
                 <div className="max-w-full overflow-x-auto overflow">
                   <table className="table-auto  w-full">
                     <thead>
-                      <tr className="bg-gray-500  text-center">
+                      <tr className="bg-[#3D8361]  text-center">
                         <th className=" border text-lg font-semibold text-white py-4   ">
                           Tên sản phẩm
                         </th>

@@ -58,7 +58,7 @@ const Promotion = () => {
           />
           <button
             type="submit"
-            className="h-10 px-6 font-semibold rounded-md  bg-gray-400 text-black  hover:bg-gray-600"
+            className="h-10 px-6 font-semibold rounded-md   bg-[#00483d] text-white  hover:bg-[#3D8361]"
           >
             Thêm Khuyến Mại
           </button>

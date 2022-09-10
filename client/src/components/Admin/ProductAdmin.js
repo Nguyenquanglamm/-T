@@ -56,7 +56,6 @@ const ProductAdmin = () => {
 
   const { handleSubmit, register } = useForm();
 
-  console.log(data);
   const [tenSanPham, settenSanPham] = useState();
   const [categoryid, setcategoryid] = useState();
   const [soLuong, setsoLuong] = useState();

@@ -10,28 +10,37 @@ const ProductsDetails = () => {
   const { productId } = useParams();
   const [indexCap, setIndexCap] = useState(0);
   const [indexColor, setIndexColor] = useState(0);
+  const [color, setColor] = useState(0)
   const handleAddtoCart = (dataProduct) => {
-    console.log(dataProduct);
+    console.log(dataProduct._id.ID);
     dataProduct = {
       ...dataProduct,
-      // dungLuong: dataProduct.dungLuong[indexCap],
-      donGia: dataProduct.donGia[indexCap],
-      mausac: dataProduct.mausac,
-      hinhanh: dataProduct.hinhanh[indexColor],
-      // dungLuong: dataProduct.dungLuong[indexColor],
-      // khuyenmai: dataProduct.khuyenmai[indexColor],
-      // tenSanPham: dataProduct.tenSanPham[indexColor],
-      quantity: 1,
-    };
+      _id:dataProduct._id.ID
+    }
+    //   // dungLuong: dataProduct.dungLuong[indexCap],
+    //   dongia: dataProduct[indexCap].dongia,
+    //   mausac: dataProduct.mausac,
+    //   hinhanh: dataProduct[indexColor].hinhanh[0],
+    //   // dungLuong: dataProduct.dungLuong[indexColor],
+    //   // khuyenmai: dataProduct.khuyenmai[indexColor],
+    //   // tenSanPham: dataProduct.tenSanPham[indexColor],
+    //   quantity: 1,
+    // };
     addToCart(dataProduct);
   };
   useEffect(() => {
     axios
-      .get(`/api/productdetailss/getInfoDetails/${productId}`)
+      // .get(`/api/productdetailss/getInfoDetails/${productId}`)
+      .get(`/api/products/v1/getInfo/${productId}`)
       .then((res) => {
-        setData(res.data[0]);
+        setData(res.data);
+        setColor(res.data[0].mausac)
       });
   }, [productId]);
+  const setColorClickCap = (index) => {
+    setColor(dataPro[index].mausac)
+  }
+  console.log(indexCap)
   return (
     <div className=" w-[1200px] m-auto">
       <div className="flex page-container  items-center gap-x-5"></div>
@@ -39,7 +48,7 @@ const ProductsDetails = () => {
         <div>
           {dataPro && (
             <span className=" font-semibold text-4xl">
-              {dataPro.productInfo.tenSanPham}
+              {dataPro[0].tenSanPham}
             </span>
           )}
           {/* <span className=" font-semibold text-4xl">
@@ -57,15 +66,15 @@ const ProductsDetails = () => {
               >
                 <div>
                   <img
-                    src={`../images/${dataPro?.hinhanh[indexColor]}`}
+                    src={`../images/${dataPro[indexCap].hinhanh[indexColor]}`}
                     alt=""
                     className=" justify-items-center w-[500px]  object-cover rounded-lg-50 py-11 group-hover:-translate-y-2 ease-out duration-300"
                   ></img>
                 </div>
                 <div className="absolute bottom-0 left-0 flex items-center h-[150px]">
-                  {dataPro?.hinhanh &&
-                    dataPro?.hinhanh.length > 0 &&
-                    dataPro?.hinhanh.map((img) => {
+                  {dataPro[indexCap]?.hinhanh &&
+                    dataPro[indexCap]?.hinhanh.length > 0 &&
+                    dataPro[indexCap]?.hinhanh.map((img) => {
                       return (
                         <div className="w-full h-full" key={uuidv4()}>
                           <img
@@ -82,26 +91,27 @@ const ProductsDetails = () => {
               <div className="wrap-details">
                 <div className=" mb-5 text-2xl">
                   <Dongia
-                    item={converCurences(dataPro && dataPro?.donGia[indexCap])}
+                    item={converCurences(dataPro && dataPro[indexCap]?.donGia)}
                   ></Dongia>
                 </div>
                 <p>Lựa chọn phiên bản</p>
                 <div className="flex gap-x-5  mb-5 mt-3 cursor-pointer ">
-                  {dataPro.dungLuong.map((item, i) => {
+                  {dataPro.map((item, i) => {
                     return (
                       <DungLuong
-                        item={item}
+                        item={item._id.dungluong}
                         key={uuidv4()}
                         index={i}
                         indexCap={indexCap}
                         setIndexCap={setIndexCap}
+                        setColorClickCap={setColorClickCap}
                       ></DungLuong>
                     );
                   })}
                 </div>
                 <p>Lựa chọn màu</p>
                 <div className="flex gap-x-5  mb-5 mt-3 cursor-pointer">
-                  {dataPro.mausac.map((item, i) => {
+                  {color.map((item, i) => {
                     return (
                       <Mausac
                         item={item}
@@ -132,9 +142,10 @@ const ProductsDetails = () => {
                   className="px-4 py-2 font-semibold rounded-md border  bg-[#00483d] text-white  hover:bg-[#3D8361]  transition-all"
                   onClick={() => {
                     handleAddtoCart({
-                      ...dataPro,
-                      dungLuong: dataPro.dungLuong[indexCap],
-                      mausac: dataPro.mausac[indexColor],
+                      ...dataPro[indexCap],
+                      dungLuong: dataPro[indexCap]._id.dungluong,
+                      mausac: dataPro[indexCap].mausac[indexColor],
+                      quantity:1,
                     });
                   }}
                 >
@@ -198,7 +209,7 @@ function Dongia({ item }) {
   );
 }
 
-function DungLuong({ item, index, indexCap, setIndexCap }) {
+function DungLuong({ item, index, indexCap, setIndexCap ,setColorClickCap}) {
   return (
     <span
       className={`py-2 px-4 border  rounded-lg ${
@@ -206,6 +217,7 @@ function DungLuong({ item, index, indexCap, setIndexCap }) {
       }`}
       onClick={() => {
         setIndexCap(index);
+        setColorClickCap(index)
       }}
     >
       {item}

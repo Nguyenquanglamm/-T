@@ -5,6 +5,10 @@ const routes = express.Router();
 
 routes.get("/", orderBuilder.list_all_orders);
 routes.get("/getProfitNowMonth", orderBuilder.getProfitMonthly);
+routes.get(
+    "/getOrderByDateRange/startDate=:startDate&?endDate=:endDate",
+    orderBuilder.getOrderByDateRange
+  );
 routes.get("/getProfitNowDay", orderBuilder.getProfitByDay);
 routes.post("/", orderBuilder.create_a_order);
 routes.get("/:idorder", orderBuilder.read_a_order);

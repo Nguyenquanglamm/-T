@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import axios from "axios";
 import { useCart } from "../../context/Cartcontext";
 import { v4 as uuidv4 } from "uuid";
@@ -15,9 +15,21 @@ const Cart = () => {
     handleQuantityChange,
     clearAllData,
   } = useCart();
-  const {navigate} = useNavigate();
+  const { navigate } = useNavigate();
   const { register, handleSubmit } = useForm();
+  const quantityRef = useRef();
+  const checkMaxQuantity = (cartItems, index) =>
+    cartItems[index].proInfo.find(
+      (item) =>
+        item.dungluong === cartItems[index].dungLuong &&
+        item.mausac === cartItems[index].mausac
+    ).soLuong;
 
+  // cartItems[index].proInfo.find(
+  //   (item) =>
+  //     item.dungLuong === cartItems[index].dungLuong &&
+  //     item.mausac === cartItems[index].mausac
+  // ).quantity;
   const handleFormSubmit = (data) => {
     data = {
       ...data,
@@ -77,11 +89,14 @@ const Cart = () => {
                     </svg>
                     </div> */}
                     <div className=" flex">
-                      <img src={`../images/${item.hinhanh}`} alt="Error"></img>
+                      <img
+                        src={`../images/${item.hinhanh[0]}`}
+                        alt="Error"
+                      ></img>
                     </div>
                     <div className="">
                       <span className="text-gray-900 text-3xl text-[20px]">
-                        {item.productInfo.tenSanPham}
+                        {item.tenSanPham}
                       </span>
                       <br />
                       <span className="text-gray-700 text-lg text-[20px]">
@@ -121,15 +136,43 @@ const Cart = () => {
                             </svg>
                           </button>
                           <input
-                            value={item.quantity}
+                            defaultValue={item.quantity}
                             // data-value={quantity}
-                            onChange={(e) => {
-                              handleQuantityChange(
-                                index,
-                                cartItems,
-                                e.target.value
-                              );
+                            ref={quantityRef}
+                            onBlur={(e) => {
+                              const maxq = checkMaxQuantity(cartItems, index);
+                              if (+e.target.value >= maxq) {
+                                e.target.value = maxq;
+                                handleQuantityChange(
+                                  index,
+                                  cartItems,
+                                  e.target.value
+                                );
+                              } else {
+                                handleQuantityChange(
+                                  index,
+                                  cartItems,
+                                  e.target.value
+                                );
+                              }
                             }}
+                            // onChange={(e) => {
+                            //   const maxq = checkMaxQuantity(cartItems, index);
+                            //   if (+e.target.value >= maxq) {
+                            //     handleQuantityChange(
+                            //       index,
+                            //       cartItems,
+                            //       e.target.value,
+                            //       maxq
+                            //     );
+                            //   } else {
+                            //     handleQuantityChange(
+                            //       index,
+                            //       cartItems,
+                            //       e.target.value
+                            //     );
+                            //   }
+                            // }}
                             className="w-[25px] outline-none border-none h-full text-center"
                           ></input>
                           <button
@@ -137,7 +180,13 @@ const Cart = () => {
                             type="button"
                             className="w-[25px] flex items-center justify-center"
                             onClick={(e) => {
-                              updateQuantityIncrement(index, cartItems);
+                              const maxq = checkMaxQuantity(cartItems, index);
+                              console.log(quantityRef.current.value);
+                              if (+quantityRef.current.value >= maxq) {
+                                quantityRef.current.value = maxq;
+                              } else {
+                                updateQuantityIncrement(index, cartItems);
+                              }
                             }}
                           >
                             <svg
@@ -233,9 +282,7 @@ const Cart = () => {
                         value="ShipCOD"
                         id="COD"
                       />
-                      <label htmlFor="COD">
-                        Ship COD
-                      </label>
+                      <label htmlFor="COD">Ship COD</label>
                     </div>
                     <div>
                       <input
@@ -244,9 +291,7 @@ const Cart = () => {
                         value="Internet Banking"
                         id="Banking"
                       />
-                      <label htmlFor="Banking">
-                       Internet Banking
-                      </label>
+                      <label htmlFor="Banking">Internet Banking</label>
                     </div>
                   </div>
                 </div>

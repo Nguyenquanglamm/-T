@@ -1,8 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { useNavigate } from "react-router-dom";
+import {useForm} from "react-hook-form"
+import { registerUser } from "../../redux/apiRequest";
+import { useDispatch } from "react-redux";
 const Register = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const {register, handleSubmit} = useForm()
   if (document === undefined) {
     return <div className="modal"></div>;
+  }
+  const handleOnSubmit = async(data)=> {
+    const a = await registerUser(
+      data,
+      dispatch,
+      navigate,
+      // setRegisterShow,
+      // setLoginShow
+    );
   }
   return ReactDOM.createPortal( 
     <div className=" fixed flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 inset-0">
@@ -10,11 +26,11 @@ const Register = () => {
       </div>
       <div className=" h-[800px] max-w-[500px] w-full space-y-8 z-[9999] bg-white p-10 rounded-lg overflow-hidden">
         <div>
-        <a href="">
+        <span onClick={()=> navigate("/")}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6  " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-          </a>
+          </span>
         
           <img
             className="mx-auto h-12 w-auto"
@@ -26,7 +42,7 @@ const Register = () => {
           </h2>
           
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit(handleOnSubmit)}>
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px ">
             <div>
@@ -40,21 +56,10 @@ const Register = () => {
                 required
                 className=" mb-2 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Tài khoản *"
+                {...register("username")}
               />
             </div>
-            <div>
-              <label for="" className="sr-only">
-              </label>
-              <input
-                id=""
-                name=""
-                type=""
-                autocomplete=""
-                required
-                className=" mb-2 rounded appearance-none  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Họ Tên *"
-              />
-            </div>
+            
             <div>
               <label for="password" className="sr-only">
                 Password
@@ -67,22 +72,11 @@ const Register = () => {
                 required
                 className=" mb-2 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Mật khẩu *"
+                {...register("password")}
+
               />
             </div>
-            <div>
-              <label for="password" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autocomplete="current-password"
-                required
-                className=" mb-2 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Nhập lại mật khẩu *"
-              />
-            </div>
+            
             <div>
               <label for="" className="sr-only">
               </label>
@@ -94,34 +88,9 @@ const Register = () => {
                 required
                 className=" mb-2 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email *"
+                {...register("email")}
               />
-            </div>
-            <div>
-              <label for="" className="sr-only">
-              </label>
-              <input
-                id=""
-                name=""
-                type=""
-                autocomplete="current-"
-                required
-                className=" mb-2 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder=" Số điện thoại *"
-              />
-            </div>
-            <div>
-              <label for="" className="sr-only">
-              </label>
-              <input
-                id=""
-                name=""
-                type=""
-                autocomplete="current-"
-                required
-                className=" mb-2 appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Địa chỉ *"
-              />
-            </div>
+            </div>            
           </div>
           
          

@@ -25,7 +25,14 @@ export const loginUser = async (user, dispatch, navigate) => {
   try {
     const res = await axios.post("/v1/auth/login", user);
     dispatch(loginSuccess(res.data));
-    navigate("/");
+    if (res.data.isAdmin) {
+      navigate("/admin");
+      // setLoginShow(false);
+    } 
+    if (!res.data.isAdmin) {
+      navigate("/");
+      // setLoginShow(false);
+    }
   } catch (err) {
     dispatch(loginFailed());
   }

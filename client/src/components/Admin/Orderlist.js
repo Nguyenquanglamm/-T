@@ -24,6 +24,12 @@ const Orderlist = () => {
         );
       });
     }
+    if(e.target.value === "Hủy"){
+      item.thongtinchitiet.forEach((el) => {
+        axios.put(`/api/productdetailss/updateQuantity/infoId=${el.productInfo._id}&mausac=${el.mausac}&dungluong=${el.dungLuong}&quantity=${-el.quantity}`
+        );
+      });
+    }
   };
 
   return (

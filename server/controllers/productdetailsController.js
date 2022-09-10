@@ -179,7 +179,7 @@ exports.getInfoPro = (req,res) => {
   ],(err, productdetailss) => {
     if (err) res.send(err);
     res.json(productdetailss);
-  })
+  }).sort({donGia : 1})
 }
 
 exports.checkProductDetails = (req,res) => {

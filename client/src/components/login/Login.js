@@ -1,6 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {useForm} from "react-hook-form"
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../redux/apiRequest";
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const {register, handleSubmit} = useForm()
   if (document === undefined) {
     return <div className="modal"></div>;
   }
@@ -10,6 +17,11 @@ const Login = () => {
   //     setError("login", { type: "custom", message: a });
   //   }
   // };
+
+  const handleOnsubmit = async (data)=> {
+    const a = await loginUser(data, dispatch, navigate);
+  }
+
   return ReactDOM.createPortal( 
       <div className=" fixed flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 inset-0">
         <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
@@ -29,7 +41,7 @@ const Login = () => {
               Đăng nhập vào tài khoản của bạn
             </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit(handleOnsubmit)}>
             <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px ">
               <div>
@@ -44,6 +56,7 @@ const Login = () => {
                   required
                   className=" mb-2 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Tài Khoản"
+                  {...register("username")}
                 />
               </div>
               <div>
@@ -58,6 +71,7 @@ const Login = () => {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Mật Khẩu"
+                  {...register("password")}
                 />
               </div>
             </div>

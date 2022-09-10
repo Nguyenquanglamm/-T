@@ -1,6 +1,24 @@
-import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { createAxios } from "../../createInstance";
+import { logOut } from "../../redux/apiRequest";
+import { logOutSuccess } from "../../redux/authSlice";
 const Base = ({ children }) => {
+  const user = useSelector((state) => state.auth.login.currentUser);
+  const accessToken = user?.accessToken;
+  const id = user?._id;
+  const dispatch = useDispatch();
+  let axiosJWT = createAxios(user, dispatch, logOutSuccess);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!user?.isAdmin) {
+      navigate("/login");
+    }
+  }, []);
+  const handleOnLogout = () => {
+    logOut(dispatch, id, navigate, accessToken, axiosJWT);
+  };
   return (
     <div>
       <nav className="bg-[#00483d] w-[1200px] h-[72px] m-auto relative ">
@@ -198,7 +216,7 @@ const Base = ({ children }) => {
               </NavLink> */}
               <div className=" inline-block ml-3 relative mt-4">
                 <div className="dropdown inline-block relative">
-                  <button
+                  {/* <button
                     type="button"
                     className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     id="user-menu-button"
@@ -210,8 +228,9 @@ const Base = ({ children }) => {
                       src="https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/281353875_1420279645100104_6981697707244189631_n.jpg?stp=dst-jpg_s526x395&_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=rycBOXjt7qkAX8LfJWu&_nc_ht=scontent.fhan2-3.fna&oh=00_AT-em1xAGgSyShiEerbSXn3i9d6s6moisDlC2J1X8zJFtg&oe=62E8CA3D"
                       alt=""
                     ></img>
-                  </button>
-                  <ul className="dropdown-menu absolute hidden text-gray-700 pt-1 right-0 ">
+                  </button> */}
+                  <button onClick={handleOnLogout} className="text-white">Đăng xuất</button>
+                  {/* <ul className="dropdown-menu absolute hidden text-gray-700 pt-1 right-0 ">
                     <li className="">
                       <a
                         className="bg-gray-600 text-gray-100 hover:bg-gray-100 hover:text-gray-500 py-2 px-4 block whitespace-no-wrap w-[200px]"
@@ -236,7 +255,7 @@ const Base = ({ children }) => {
                         Đăng xuất
                       </a>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </div>

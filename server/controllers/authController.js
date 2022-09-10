@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+require("dotenv").config();
 let refreshTokens = [];
 
 const authController = {
@@ -33,7 +33,7 @@ const authController = {
         isAdmin: user.isAdmin,
       },
       process.env.JWT_ACCESS_KEY,
-      { expiresIn: "30s" }
+      { expiresIn: "365d" }
     );
   },
 
@@ -73,6 +73,7 @@ const authController = {
           secure:false,
           path: "/",
           sameSite: "strict",
+          maxAge: 1000 * 60 * 60 * 24 * 365,
         });
         const { password, ...others } = user._doc;
         res.status(200).json({ ...others, accessToken, refreshToken });

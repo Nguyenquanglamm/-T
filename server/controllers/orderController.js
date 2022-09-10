@@ -109,3 +109,51 @@ exports.getProfitByDay = (req, res) =>{
   )
   .sort({_id: 1});
 }
+
+exports.getOrderByDateRange = (req, res) => {
+  console.log(req.params);
+  order
+    .aggregate(
+      [
+        {
+          $project: {
+            trangthai: 1,
+            ngaytao: 1,
+            // day: { $dayOfMonth: "$updatedAt" },
+            // month: { $month: "$updatedAt" },
+            // year: { $year: "$updatedAt" },
+            tongtien: 1,
+          },
+        },
+        {
+          $match: {
+            trangthai: "Hoàn thành",
+            ngaytao: {
+              $gte: new Date(req.params.startDate),
+              $lte: new Date(req.params.endDate),
+            },
+          },
+        },
+        {
+          $group: {
+            _id: { $dateToString: { format: "%d/%m/%Y", date: "$ngaytao" } },
+            tongtien: { $sum: "$tongtien" },
+            count: { $sum: 1 },
+            ngaytao: { $first: "$ngaytao" },
+          },
+        },
+        {
+          $project: {
+            tongtien: 1,
+            count: 1,
+            ngaytao: 1,
+          },
+        },
+      ],
+      (err, orders) => {
+        if (err) res.send(err);
+        res.json(orders);
+      }
+    )
+    .sort({ ngayDat: 1 });
+};

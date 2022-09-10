@@ -1,13 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext  } from "react-router-dom";
 
 import {useForm} from "react-hook-form"
 
 const Products = () => {
+
   const [data, setData] = useState([]);
   const [dataCate, setDataCate] = useState([]);
   const [dataPromotion, setDataPromotion] = useState([]);
+  const [tenSanPham, settenSanPham] = useState();
+  const [categoryid, setcategoryid] = useState();
+  const [soLuong, setsoLuong] = useState();
+  const [donGia, setdonGia] = useState();
+  const [mausac, setmausac] = useState();
+  const [dungluong, setdungluong] = useState();
+  const [file, setFile] = useState();
+  const [reload, setReload] = useState(false);
+
   const navigate = useNavigate();
   useEffect(() => {
     axios.get("/api/products").then((res) => {
@@ -31,15 +41,7 @@ const Products = () => {
 
   const{ handleSubmit, register} = useForm();
 
-  console.log(data);
-  const [tenSanPham, settenSanPham] = useState();
-  const [categoryid, setcategoryid] = useState();
-  const [soLuong, setsoLuong] = useState();
-  const [donGia, setdonGia] = useState();
-  const [mausac, setmausac] = useState();
-  const [dungluong, setdungluong] = useState();
-  const [file, setFile] = useState();
-  const [reload, setReload] = useState(false);
+  
   // const handleFormSubmit = (e) => {
   //   e.preventDefault();
   //   const formData = new FormData();
@@ -154,6 +156,7 @@ const Products = () => {
               </div>
             );
           })}
+          
       </div>
     </div>
   );

@@ -84,8 +84,8 @@ const Base = () => {
               <div className="hidden sm:block sm:ml-6">
                 <div className="flex space-x-4">
                   <div className=" ">
-                    <button className=" text-white  hover:text-gray-300 px-3 py-2 text-sm font-medium w-[100px] h-[80px] ">
-                      <NavLink to="/" className="">
+                    <button className=" text-white px-3 py-2 text-sm font-medium w-[100px] h-[80px] ">
+                      <NavLink to="/" className=" hover:text-gray-300 hover:no-underline ">
                         Trang chủ
                       </NavLink>
                     </button>
@@ -137,10 +137,10 @@ const Base = () => {
               </a>
               <div className=" inline-block ml-3 relative">
                 {user ? <span
-                  className=" text-white  hover:text-gray-300 px-3 py-2 text-sm font-medium w-[100px] h-[80px] "
+                  className=" text-white hover:text-gray-300 px-3 py-2 text-sm font-medium w-[100px] h-[80px] cursor-pointer "
                   onClick={handleOnLogout}
                 >
-                  Đăng xuất
+                  Đăng nhập
                 </span> : <a
                   className=" text-white  hover:text-gray-300 px-3 py-2 text-sm font-medium w-[100px] h-[80px] "
                   href="/login"
@@ -185,10 +185,10 @@ const Base = () => {
             <div className="mr-12 hidden lg:block">
               <span>Kết nối với chúng tôi trên mạng xã hội:</span>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center ">
               <a
                 href="https://www.facebook.com/nguyenquanglam199"
-                className="mr-6 text-white"
+                className="mr-6 text-white hover:text-gray-400"
               >
                 <svg
                   aria-hidden="true"
@@ -206,7 +206,7 @@ const Base = () => {
                   ></path>
                 </svg>
               </a>
-              <a href="" className="mr-6 text-white">
+              <a href="" className="mr-6 text-white hover:text-gray-400">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -223,7 +223,7 @@ const Base = () => {
                   ></path>
                 </svg>
               </a>
-              <a href="" className="mr-6 text-white">
+              <a href="" className="mr-6 text-white hover:text-gray-400">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -240,7 +240,7 @@ const Base = () => {
                   ></path>
                 </svg>
               </a>
-              <a href="" className="mr-6 text-white">
+              <a href="" className="mr-6 text-white hover:text-gray-400">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -257,7 +257,7 @@ const Base = () => {
                   ></path>
                 </svg>
               </a>
-              <a href="" className="mr-6 text-white">
+              <a href="" className="mr-6 text-white hover:text-gray-400">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -274,7 +274,7 @@ const Base = () => {
                   ></path>
                 </svg>
               </a>
-              <a href="" className="text-white">
+              <a href="" className="mr-6 text-white hover:text-gray-400">
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -300,22 +300,22 @@ const Base = () => {
                   Hỗ Trợ - Dịch Vụ
                 </h6>
                 <p className="mb-4">
-                  <a href="" className="text-white">
+                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
                     Mua hàng trả góp
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="" className="text-white">
+                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
                     Tra cứu đơn hàng
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="/baohanh" className="text-white">
+                  <a href="/baohanh" className="text-white hover:no-underline hover:text-gray-300">
                     Chính sách bảo hành
                   </a>
                 </p>
                 <p>
-                  <a href="" className="text-white">
+                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
                     Chính sách giải quyết khuyến mại
                   </a>
                 </p>
@@ -325,22 +325,22 @@ const Base = () => {
                   Thông Tin Liên Hệ
                 </h6>
                 <p className="mb-4">
-                  <a href="" className="text-white">
+                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
                     Bán hàng Online
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="" className="text-white">
+                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
                     Chăm sóc Khách Hàng
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="" className="text-white">
+                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
                     Hỗ Trợ Kỹ thuật
                   </a>
                 </p>
                 <p>
-                  <a href="" className="text-white">
+                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
                     Hỗ trợ Bảo hành & Sửa chữa
                   </a>
                 </p>
@@ -428,7 +428,7 @@ const Base = () => {
             <span>© 2022. CÔNG TY CỔ PHẦN XÂY DỰNG VÀ ĐẦU TƯ THƯƠNG MẠI</span>
             <br />
             <span>Địa chỉ : Lễ Độ - Kim Anh - Kim Thành - Hải Dương</span>
-            <p className="text-white font-semibold"></p>
+            <p className="text-white hover:no-underline hover:text-gray-300 font-semibold"></p>
           </div>
         </footer>
       </div>

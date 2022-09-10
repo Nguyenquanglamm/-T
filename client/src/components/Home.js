@@ -70,31 +70,31 @@ const Products = () => {
       <div className=" grid grid-cols-5 page-container w-[1200px] m-auto text-center text-l cursor-pointer ">
         <a
           href=""
-          className="hover:bg-slate-600 hover:text-slate-200 rounded-md shadow-md border p-2"
+          className="hover:bg-slate-600 hover:no-underline hover:text-slate-200 rounded-md shadow-md border p-2"
         >
           APPLE
         </a>
         <a
           href=""
-          className="hover:bg-slate-600 hover:text-slate-200 rounded-md shadow-md border p-2"
+          className="hover:bg-slate-600 hover:no-underline hover:text-slate-200 rounded-md shadow-md border p-2"
         >
           SAMSUNG
         </a>
         <a
           href=""
-          className="hover:bg-slate-600 hover:text-slate-200 rounded-md shadow-md border p-2"
+          className="hover:bg-slate-600 hover:no-underline hover:text-slate-200 rounded-md shadow-md border p-2"
         >
           OPPO
         </a>
         <a
           href=""
-          className="hover:bg-slate-600 hover:text-slate-200 rounded-md shadow-md border p-2"
+          className="hover:bg-slate-600 hover:no-underline hover:text-slate-200 rounded-md shadow-md border p-2"
         >
           NOKIA
         </a>
         <a
           href=""
-          className="hover:bg-slate-600 hover:text-slate-200 rounded-md shadow-md border p-2"
+          className="hover:bg-slate-600 hover:no-underline hover:text-slate-200 rounded-md shadow-md border p-2"
         >
           VIVO
         </a>

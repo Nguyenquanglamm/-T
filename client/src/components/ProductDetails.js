@@ -51,10 +51,8 @@ const ProductsDetails = () => {
               {dataPro[0].tenSanPham}
             </span>
           )}
-          {/* <span className=" font-semibold text-4xl">
-              {dataPro.productInfo.promotionid}
-            </span> */}
-
+          
+         
           <br />
         </div>
         <div className="py-6 flex gap-x-6 ">
@@ -89,10 +87,31 @@ const ProductsDetails = () => {
               </div>
 
               <div className="wrap-details">
-                <div className=" mb-5 text-2xl">
+                  <p>Giá của sản phẩm: </p>
+                  <div className=" flex">
+                    
+                  <div className=" mb-5 text-2xl ">
+                  <DongiaCu
+                    item={converCurences(dataPro && dataPro[indexCap]?.donGiaCu)}
+                  ></DongiaCu>
+                </div>
+                <div className=" text-red-600">
+                {Math.round(
+                          ((dataPro[indexCap]?.donGia - dataPro[indexCap]?.donGiaCu) /
+                          dataPro[indexCap]?.donGiaCu) *
+                            100
+                        )}%
+                </div>
+                  </div>
+                <div className=" flex w-[340px]">
+                  
+                <div className=" mb-5 text-2xl ">
                   <Dongia
                     item={converCurences(dataPro && dataPro[indexCap]?.donGia)}
                   ></Dongia>
+                </div>
+                
+                <p>|Giá đã bao gồm 10% VAT</p>
                 </div>
                 <p>Lựa chọn phiên bản</p>
                 <div className="flex gap-x-5  mb-5 mt-3 cursor-pointer ">
@@ -123,19 +142,7 @@ const ProductsDetails = () => {
                     );
                   })}
                 </div>
-                {/* <div className="flex gap-x-5  mb-5 mt-3 cursor-pointer">
-                  {dataPro.promotion.noidung.map((item, i) => {
-                    return (
-                      <Khuyenmai
-                        item={item}
-                        index={i}
-                        indexColor={indexColor}
-                        setIndexColor={setIndexColor}
-                        key={uuidv4()}
-                      ></Khuyenmai>
-                    );
-                  })}
-                </div> */}
+                
 
                 <button
                   type="button"
@@ -154,7 +161,7 @@ const ProductsDetails = () => {
               </div>
             </div>
           )}
-          <div className=" border border-gray-400 ml-20 p-4 w-[288px] ">
+          <div className=" border border-gray-400 ml-10 p-4 w-[288px] ">
             <h4 className=" text-center">Thông Tin Bảo Hành</h4><br/>
             <p className=" flex">
               <svg
@@ -203,6 +210,15 @@ const ProductsDetails = () => {
 function Dongia({ item }) {
   return (
     <span className="py-2 px-4 text-red-600 rounded-lg">
+      {item}
+      {" đ"}
+    </span>
+  );
+}
+
+function DongiaCu({ item }) {
+  return (
+    <span className="py-2 px-4 text-xs text-gray-600 rounded-lg line-through ">
       {item}
       {" đ"}
     </span>

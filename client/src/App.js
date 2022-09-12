@@ -23,6 +23,7 @@ import UpdateProductAdmin from "./components/Admin/UpdateProductAdmin";
 import UpdateProductDetailsAdmin from "./components/Admin/UpdateProductDetailsAdmin";
 import Supplier from "./components/Supplier";
 import Ordersuccess from "./components/Ordersuccess";
+import Searchorder from "./components/Searchorder";
 
 function App() {
   return (
@@ -78,6 +79,10 @@ function App() {
         <Route
           path="/ordersuccess"
           element={<Ordersuccess></Ordersuccess>}
+        ></Route>
+        <Route
+          path="/searchorder"
+          element={<Searchorder></Searchorder>}
         ></Route>
       </Route>
       <Route path="/login" element={<Login />}></Route>

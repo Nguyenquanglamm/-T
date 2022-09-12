@@ -5,10 +5,11 @@ import { v4 as uuidv4 } from "uuid";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import ChartPriceByTime, { data, options } from "./ChartPriceByTime";
 const WarehouseDetail = () => {
   const [dataDetail, setDataDetail] = useState();
   const [notiDele, setNotiDele] = useState(true);
+  const [dataTime, setDataTime] = useState();
   const { idSanPham } = useParams();
   const navigate = useNavigate();
   const notify = () =>
@@ -26,7 +27,11 @@ const WarehouseDetail = () => {
     axios.get(`/api/productdetailss/detail/${idSanPham}`).then((res) => {
       setDataDetail(res.data);
     });
+    axios.get(`/api/order/v2/getPriceByTime/${idSanPham}`).then((res) => {
+      setDataTime(res.data);
+    });
   }, [idSanPham]);
+  console.log(dataTime);
   const handleDelete = (item) => {
     console.log(item._id);
     axios.delete(`/api/productdetailss/${item._id}`).then((res) => {
@@ -34,6 +39,7 @@ const WarehouseDetail = () => {
       setNotiDele(!notiDele);
     });
   };
+
   return (
     <div>
       <div className="">
@@ -93,6 +99,9 @@ const WarehouseDetail = () => {
                         <th className=" border text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4  ">
                           Đơn Giá
                         </th>
+                        <th className=" border text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4  ">
+                          Đơn Giá Cũ
+                        </th>
                         <th className=" border text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4  "></th>
                       </tr>
                     </thead>
@@ -117,7 +126,10 @@ const WarehouseDetail = () => {
                               {item.soLuong}
                             </th>
                             <th className="  text-lg font-semibold text-black py-4 lg:py-7 px-3 lg:px-4  ">
-                              {converCurences(item.donGia)}đ/1 Chiếc
+                              {converCurences(item.donGia)}đ
+                            </th>
+                            <th className="  text-lg font-semibold text-black py-4 lg:py-7 px-3 lg:px-4  ">
+                              {converCurences(item.donGiaCu)}đ
                             </th>
                             <th>
                               <div className=" flex  justify-between border  text-dark font-medium text-base py-8 px-2 ">
@@ -132,8 +144,10 @@ const WarehouseDetail = () => {
                                   <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    onClick={() =>{
-                                      navigate(`/Admin/updateproductdetailsadmin/${item._id}`);
+                                    onClick={() => {
+                                      navigate(
+                                        `/Admin/updateproductdetailsadmin/${item._id}`
+                                      );
                                     }}
                                     d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                                   />
@@ -162,7 +176,7 @@ const WarehouseDetail = () => {
                       })}
                   </table>
                   <button
-                  className=" flex p-2 mt-3  border bg-blue-300 rounded-lg "
+                    className=" flex p-2 mt-3  border bg-blue-300 rounded-lg "
                     type="button"
                     onClick={() => {
                       navigate(`/admin/warehouse`);
@@ -176,6 +190,14 @@ const WarehouseDetail = () => {
           </div>
         </section>
       </div>
+      {dataTime && dataTime.length > 0 && (
+        <div className="w-[40%] mx-auto">
+          <ChartPriceByTime
+            options={options}
+            data={data(dataTime)}
+          ></ChartPriceByTime>
+        </div>
+      )}
     </div>
   );
 };

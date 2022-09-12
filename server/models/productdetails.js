@@ -18,7 +18,7 @@ const productdetailsSchema = new Schema(
       type: Number,
       required: "Giá Sản Phẩm Không Được Để Trống",
     },
-    donGiaKhuyenMai: {
+    donGiaCu: {
       type: Number,
       required: "Giá Khuyến Mại Sản Phẩm Không Được Để Trống",
     },

@@ -228,6 +228,7 @@ exports.getProInfo = (req, res) => {
             dungluong: "$proInfo.dungluong",
           },
           donGia: { $first: "$proInfo.donGia" },
+          donGiaCu: { $first: "$proInfo.donGiaCu" },
           hinhanh: { $push: "$hinhanh" },
           mausac: { $push: "$proInfo.mausac" },
           soLuong: { $first: "$proInfo.soLuong" },

@@ -43,7 +43,8 @@ exports.create_a_productdetails = (req, res) => {
   const newproductdetails = new productdetails({
     idSanPham: req.body.idSanPham,
     hinhanh: req.file.filename,
-    donGia: req.body.donGia, 
+    donGia: req.body.donGia,
+    donGiaCu: req.body.donGiaCu,
     dungluong: req.body.dungluong,
     mausac: req.body.mausac,
     soLuong: req.body.soLuong,
@@ -64,7 +65,7 @@ exports.read_a_productdetails = (req, res) => {
 };
 
 exports.update_a_productdetails = (req, res) => {
-  productdetails.findOneAndUpdate(
+  productdetails.findByIdAndUpdate(
     { _id: req.params.productdetailsId },
     { $set: req.body },
     { new: true },
@@ -112,6 +113,7 @@ exports.getAllProductDetails =  (req,res) => {
         mausac:{$addToSet:"$mausac"},
         dungluong:{$addToSet:"$dungluong"},
         donGia:{$addToSet:"$donGia"},
+        donGiaCu:{$addToSet:"$donGiaCu"},
         soLuong:{$sum: "$soLuong"}
       }
     },
@@ -162,6 +164,7 @@ exports.getInfoPro = (req,res) => {
         _id: "$idSanPham",
         hinhanh : {$push : "$hinhanh"},
         donGia: {$addToSet :"$donGia"},
+        donGiaCu: {$addToSet :"$donGiaCu"},
         dungLuong:{$addToSet :"$dungluong"},
         mausac:{$addToSet:"$mausac"},
       }

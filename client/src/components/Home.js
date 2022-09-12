@@ -167,11 +167,11 @@ const Products = () => {
             );
           })}
       </div>
-      <div className="flex gap-x-16 justify-center page-container text-black py-4 page-container">
-        <ul></ul>
-        <ul></ul>
-        <ul></ul>
-        <ul></ul>
+      <div className="flex justify-center page-container text-black py-5 page-container">
+        <ul className="px-4"><img className=" shadow-2xl" src="https://cdn.hoanghamobile.com/i/home/Uploads/2022/08/11/chuyen-trang-samssung-11.png"/></ul>
+        <ul className="px-4"><img className=" shadow-2xl" src="https://cdn.hoanghamobile.com/i/home/Uploads/2022/09/09/ip14-web-uuuu_637983185948022155.jpg"/></ul>
+        <ul  className="px-4"><img className=" shadow-2xl" src="https://cdn.hoanghamobile.com/i/home/Uploads/2022/08/11/chuyen-trang-samssung-11.png"/></ul>
+        <ul  className="px-4"><img className=" shadow-2xl" src="https://cdn.hoanghamobile.com/i/home/Uploads/2022/09/09/ip14-web-uuuu_637983185948022155.jpg"/></ul>
       </div>
     </div>
   );

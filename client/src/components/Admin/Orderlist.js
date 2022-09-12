@@ -17,21 +17,21 @@ const Orderlist = () => {
   };
 
   const handleUpdateQuantity = (e, item) => {
-    console.log(e.target.value);
+    console.log(item);
     if (e.target.value === "Hoàn thành") {
       item.thongtinchitiet.forEach((el) => {
-        axios.put(`/api/productdetailss/updateQuantity/infoId=${el.productInfo._id}&mausac=${el.mausac}&dungluong=${el.dungLuong}&quantity=${el.quantity}`
+        axios.put(`/api/productdetailss/updateQuantity/infoId=${el._id}&mausac=${el.mausac}&dungluong=${el.dungLuong}&quantity=${el.quantity}`
         );
       });
     }
     if(e.target.value === "Hủy"){
       item.thongtinchitiet.forEach((el) => {
-        axios.put(`/api/productdetailss/updateQuantity/infoId=${el.productInfo._id}&mausac=${el.mausac}&dungluong=${el.dungLuong}&quantity=${-el.quantity}`
+        axios.put(`/api/productdetailss/updateQuantity/infoId=${el._id}&mausac=${el.mausac}&dungluong=${el.dungLuong}&quantity=${-el.quantity}`
         );
       });
     }
   };
-
+console.log(dataOrder)
   return (
     <div className="">
       <script src="https://cdn.tailwindcss.com"></script>
@@ -283,7 +283,7 @@ const Orderlist = () => {
                               {item.thongtinchitiet.map((el) => {
                                 return (
                                   <tr className="  border-b-2 border-t-2 hadow-inners ">
-                                    Sản Phẩm: {el.productInfo.tenSanPham},{" "}
+                                    Sản Phẩm: {el.productInfo?.tenSanPham || el.tenSanPham},{" "}
                                     {el.dungLuong}, {el.mausac}
                                     <br /> Số lượng :{el.quantity}
                                   </tr>

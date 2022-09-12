@@ -1,17 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const CreateProductDetai = () => {
   const [dataPro, setDataPro] = useState([]);
   const { handleSubmit, register } = useForm();
-
+  const navigate = useNavigate()
   const handleOnSubmit = async (data) => {
     const formData = new FormData();
     formData.append("idSanPham", data.idSanPham);
     formData.append("mausac", data.mausac);
     formData.append("dungluong", data.dungluong);
     formData.append("donGia", data.donGia);
+    formData.append("donGiaCu", data.donGiaCu);
     formData.append("soLuong", data.soLuong);
     formData.append("hinhanh", data.hinhanh[0]);
 
@@ -20,7 +22,9 @@ const CreateProductDetai = () => {
     );
     if (checkDetails.data.length === 0) {
       await axios.post("/api/productdetailss", formData).then((data) => {
-        console.log(data)
+        if(data.status === 200){
+          navigate("/admin/product")
+        }
       });
       return;
     }
@@ -75,6 +79,14 @@ const CreateProductDetai = () => {
         name="donGia"
         placeholder="Nhập Đơn Giá Sản Phẩm"
         {...register("donGia")}
+        className="py-3 px-12 border boder-gray-300 rounded-lg mx-2 my-2"
+      />
+
+<input
+        type="text"
+        name="donGiaCu"
+        placeholder="Nhập Đơn Giá Cũ Sản Phẩm"
+        {...register("donGiaCu")}
         className="py-3 px-12 border boder-gray-300 rounded-lg mx-2 my-2"
       />
 

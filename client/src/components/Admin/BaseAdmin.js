@@ -69,15 +69,35 @@ const Base = ({ children }) => {
               <div className="hidden sm:block sm:ml-6">
                 <div className="flex space-x-4">
                   <div className="">
-                    <button className="text-white  hover:bg-[#00483d]  px-3 py-2 text-sm font-medium w-[100px] h-[80px] ">
-                      <a href="/admin" className=" hover:text-gray-300 hover:no-underline ">
+                    <button className="text-white  hover:bg-[#00483d]  px-3 py-2 text-sm font-medium w-[120px] h-[80px] ">
+                      
+                      <a
+                        href="/admin"
+                        className=" hover:text-gray-300 hover:no-underline flex "
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-1">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+</svg>
+
                         Trang chủ
                       </a>
                     </button>
 
                     <div className="dropdown inline-block relative">
                       <button className="text-white hover:bg-[#00483d] hover:text-white px-3 py-2 text-sm font-medium ">
-                        <span className="">Danh mục</span>
+                        <div className=" flex ">
+                          <span className=" mr-1">Danh mục</span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down-fill"
+                            viewBox="0 0 16 10"
+                          >
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                          </svg>
+                        </div>
                       </button>
                       <ul className="dropdown-menu absolute hidden text-white pt-1 shadow-md rounded-lg z-10 ">
                         <li className="">
@@ -116,7 +136,19 @@ const Base = ({ children }) => {
                     </div>
                     <div className="dropdown inline-block relative">
                       <button className="text-white hover:bg-[#00483d] hover:text-white px-3 py-2 text-sm font-medium  ">
-                        <span className="">Quản lý sản phẩm</span>
+                        <div className=" flex ">
+                          <span className="mr-1">Quản lý sản phẩm</span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-caret-down-fill"
+                            viewBox="0 0 16 10"
+                          >
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                          </svg>
+                        </div>
                       </button>
                       <ul className="dropdown-menu absolute hidden text-white pt-1 shadow-md rounded-lg z-10 ">
                         <li className="">
@@ -229,7 +261,12 @@ const Base = ({ children }) => {
                       alt=""
                     ></img>
                   </button> */}
-                  <button onClick={handleOnLogout} className="text-white hover:text-gray-300">Đăng xuất</button>
+                  <button
+                    onClick={handleOnLogout}
+                    className="text-white hover:text-gray-300"
+                  >
+                    Đăng xuất
+                  </button>
                   {/* <ul className="dropdown-menu absolute hidden text-gray-700 pt-1 right-0 ">
                     <li className="">
                       <a
@@ -404,22 +441,34 @@ const Base = ({ children }) => {
                   Hỗ Trợ - Dịch Vụ
                 </h6>
                 <p className="mb-4">
-                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
+                  <a
+                    href=""
+                    className="text-white hover:no-underline hover:text-gray-300"
+                  >
                     Mua hàng trả góp
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
+                  <a
+                    href=""
+                    className="text-white hover:no-underline hover:text-gray-300"
+                  >
                     Tra cứu đơn hàng
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="/baohanh" className="text-white hover:no-underline hover:text-gray-300">
+                  <a
+                    href="/baohanh"
+                    className="text-white hover:no-underline hover:text-gray-300"
+                  >
                     Chính sách bảo hành
                   </a>
                 </p>
                 <p>
-                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
+                  <a
+                    href=""
+                    className="text-white hover:no-underline hover:text-gray-300"
+                  >
                     Chính sách giải quyết khuyến mại
                   </a>
                 </p>
@@ -429,22 +478,34 @@ const Base = ({ children }) => {
                   Thông Tin Liên Hệ
                 </h6>
                 <p className="mb-4">
-                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
+                  <a
+                    href=""
+                    className="text-white hover:no-underline hover:text-gray-300"
+                  >
                     Bán hàng Online
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
+                  <a
+                    href=""
+                    className="text-white hover:no-underline hover:text-gray-300"
+                  >
                     Chăm sóc Khách Hàng
                   </a>
                 </p>
                 <p className="mb-4">
-                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
+                  <a
+                    href=""
+                    className="text-white hover:no-underline hover:text-gray-300"
+                  >
                     Hỗ Trợ Kỹ thuật
                   </a>
                 </p>
                 <p>
-                  <a href="" className="text-white hover:no-underline hover:text-gray-300">
+                  <a
+                    href=""
+                    className="text-white hover:no-underline hover:text-gray-300"
+                  >
                     Hỗ trợ Bảo hành & Sửa chữa
                   </a>
                 </p>

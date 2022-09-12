@@ -10,6 +10,7 @@ routes.get(
     orderBuilder.getOrderByDateRange
   );
 routes.get("/getProfitNowDay", orderBuilder.getProfitByDay);
+routes.get("/v2/getPriceByTime/:id", orderBuilder.getPriceByTime);
 routes.post("/", orderBuilder.create_a_order);
 routes.get("/:idorder", orderBuilder.read_a_order);
 routes.put("/:idorder", orderBuilder.update_a_order);

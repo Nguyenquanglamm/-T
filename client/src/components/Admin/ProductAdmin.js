@@ -186,7 +186,7 @@ const ProductAdmin = () => {
                 <div className="w-full">
                   <a
                     href="productDetails"
-                    className=" block text-center  mb-2 px-6 font-semibold rounded-md  bg-gray-500 text-white  hover:bg-green-800    "
+                    className=" block text-center  mb-2 px-6 font-semibold rounded-md  bg-gray-500 text-white hover:text-white hover:no-underline  hover:bg-green-800    "
                   >
                     Thêm chi tiết
                   </a>

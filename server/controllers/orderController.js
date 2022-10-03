@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const order = mongoose.model("order");
+const _ = require("lodash");
 
 exports.list_all_orders = (req, res) => {
   order.find({}, (err, orders) => {
@@ -208,6 +209,120 @@ exports.getPriceByTime = (req, res) => {
       // { $sort: { _id.day: -1, month: -1 } },
 
       { $sort: { ram: 1 } },
+    ],
+    (err, order) => {
+      if (err) res.send(err);
+      res.json(order);
+    }
+  );
+};
+
+exports.filterOrder = (req, res) => {
+  if (_.isEmpty(req.query)) {
+    order.find({}, (err, orders) => {
+      if (err) res.send(err);
+      res.json(orders);
+    });
+  } else {
+    order.aggregate(
+      [
+        {
+          $match: {
+            sdt: {
+              $regex: ".*" + req.query.sdt + ".*",
+              $options: "$gi",
+            },
+          },
+        },
+      ],
+      (err, order) => {
+        if (err) res.send(err);
+        res.json(order);
+      }
+    );
+  }
+};
+
+// exports.getQuantityOderByPhone = (req, res) => {
+//   order.aggregate(
+//     [
+//       {
+//         $group: {
+//           _id: "$soDienThoai",
+//           fullName: { $first: "$hoTen" },
+//           address: { $first: "$diaChi" },
+//           // count: { $sum: 1 },
+//           total: {
+//             $sum: {
+//               $cond: {
+//                 if: { $eq: ["$trangThai", "Đã giao"] },
+//                 then: "$tongTien",
+//                 else: 0,
+//               },
+//             },
+//           },
+//           count: {
+//             $sum: {
+//               $cond: {
+//                 if: { $eq: ["$trangThai", "Đã giao"] },
+//                 then: 1,
+//                 else: 0,
+//               },
+//             },
+//           },
+//         },
+//       },
+//       { $sort: { count: -1 } },
+//       { $limit: 5 },
+//     ],
+//     (err, orders) => {
+//       if (err) res.send(err);
+//       res.json(orders);
+//     }
+//   );
+// };
+
+exports.getorderByCondition = (req, res) => {
+  // if(_.isEmpty(req.query.idOrPhone)){
+  //   order.find({},(err,orders)=> {
+  //     if(err) res.send(err)
+  //     res.json(orders)
+  //   })
+  console.log("tim kiem", req.query.idOrPhone)
+  // }
+  order.aggregate(
+    [
+      {
+        $addFields: {
+          _newID: "$_id"
+        }
+      },
+      {
+        $match: {
+          $or: [
+            {
+              _newID: req.query.idOrPhone,
+            },
+            {
+              sdt: req.query.idOrPhone,
+            },
+          ],
+          // $or: [
+          //   {
+          //     _id: {
+          //       $regex: ".*" + req.params.query + ".*",
+          //       $options: "$gi",
+          //     },
+          //   },
+          //   {
+          //     soDienThoatKhachYeuCau: {
+          //       $regex: ".*" + req.params.query + ".*",
+          //       $options: "$gi",
+          //     },
+          //   },
+          // ],
+        },
+      },
     ],
     (err, order) => {
       if (err) res.send(err);

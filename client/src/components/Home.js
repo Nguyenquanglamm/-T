@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
-
+import { Link, NavLink, useNavigate, useOutletContext } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Slider from "./Slider";
+
 
 const Products = () => {
   const [data, setData] = useState([]);
@@ -99,10 +100,11 @@ const Products = () => {
           VIVO
         </a>
       </div>
-      <img
+      {/* <img
         className=" mt-5 rounded-xl shadow-md"
         src="https://cdn.hoanghamobile.com/i/home/Uploads/2022/09/08/dang-ki-iphone-14wee.png"
-      ></img>
+      ></img> */}
+      <Slider></Slider>
       <div className="  grid grid-cols-5 page-container w-[1200px] m-auto ">
         {data && !searchData && 
           data.length > 0 &&

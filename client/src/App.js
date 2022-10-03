@@ -24,6 +24,7 @@ import UpdateProductDetailsAdmin from "./components/Admin/UpdateProductDetailsAd
 import Supplier from "./components/Supplier";
 import Ordersuccess from "./components/Ordersuccess";
 import Searchorder from "./components/Searchorder";
+import Slider from "./components/Slider";
 
 function App() {
   return (
@@ -83,6 +84,10 @@ function App() {
         <Route
           path="/searchorder"
           element={<Searchorder></Searchorder>}
+        ></Route>
+        <Route
+          path="/slider"
+          element={<Slider></Slider>}
         ></Route>
       </Route>
       <Route path="/login" element={<Login />}></Route>

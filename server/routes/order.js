@@ -15,5 +15,7 @@ routes.post("/", orderBuilder.create_a_order);
 routes.get("/:idorder", orderBuilder.read_a_order);
 routes.put("/:idorder", orderBuilder.update_a_order);
 routes.delete("/:idorder", orderBuilder.delete_a_order);
+routes.get("/v1/search/", orderBuilder.filterOrder);
+routes.get("/v4/search", orderBuilder.getorderByCondition);
 
 module.exports = routes;
